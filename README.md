@@ -6,19 +6,48 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
+-ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin16]
 
 * Database creation
 
-* Database initialization
+## messages table
 
-* How to run the test suite
+|Column|Type|Options|
+|------|----|-------|
+|body|text|null: false|
+|image|string||
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :group
+- belongs_to :user
 
-* Deployment instructions
+## users table
 
-* ...
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|string|null: false|
+|password|string|null: false|
+
+### Association
+- has_many :messages
+- has_many :groups, through: :group_users
+
+## groupsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :users, through: :group_users
+
+## group_users table
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
