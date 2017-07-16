@@ -42,7 +42,6 @@ Things you may want to cover:
 |name|string|null: false|
 
 ### Association
-- belongs_to :group
 - has_many :users, through: :group_users
 
 ## group_users table
