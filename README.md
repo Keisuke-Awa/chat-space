@@ -8,18 +8,14 @@ Things you may want to cover:
 * Ruby version
 -ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin16]
 
-* System dependencies
-
-* Configuration
-
 * Database creation
 
-## messagesテーブル
+## messages table
 
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null: false|
-|image|string|null: false, foreign_key: true|
+|image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
@@ -27,35 +23,32 @@ Things you may want to cover:
 - belongs_to :group
 - belongs_to :user
 
-## usersテーブル
+## users table
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |email|string|null: false|
+|password|string|null: false|
 
 ### Association
 - has_many :messages
 - has_many :groups, through: :group_users
-- has_many :group_users
 
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false|
+|name|string|null: false|
 
 ### Association
 - belongs_to :group
 - has_many :users, through: :group_users
-- has_many :group_users
 
-* Database initialization
+## group_users table
 
-* How to run the test suite
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
