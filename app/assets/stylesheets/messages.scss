@@ -18,11 +18,12 @@ header {
       padding: 0 20px;
       margin-bottom: 20px;
       &__name {
+        float: left;
         padding-top: 30px;
       }
       &__icons {
         float: right;
-        // padding-bottom: 36px;
+        padding-top: 32px;
       }
     }
     &__now-group {
