@@ -8,6 +8,8 @@ header {
 }
 
 .side-bar {
+  width: 300px;
+  height: 100vh;
   float: left;
   color: #ffffff;
   background-color: #2f3e51;
@@ -26,15 +28,22 @@ header {
         padding-top: 32px;
       }
     }
-    &__now-group {
-    padding: 0 20px;
-    }
-    &__other-groups {
-    padding: 0 20px;
+    &__groups {
+      padding: 0 20px;
+      &__individual {
+        margin-bottom: 40px;
+        &--name {
+          font-size: 15px;
+        }
+        &--message {
+          font-size: 11px;
+        }
+      }
     }
 }
 
 ul {
+  margin-bottom: 40px;
   li {
     font-size: 15px;
     margin-bottom: 5px;
