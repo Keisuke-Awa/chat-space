@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $blue: #38aef0;
+$white: #ffffff:
 
 header {
   background-color: $blue;
-  color: #ffffff;
+  color: $white;
   text-align: center;
 }
 
@@ -13,7 +14,7 @@ header {
   width: 300px;
   height: 100vh;
   float: left;
-  color: #ffffff;
+  color: $white;
   background-color: #2f3e51;
     &__user {
       height: 100px;
@@ -52,7 +53,7 @@ header {
   height: 100vh;
   &__header {
     height: 100px;
-    background-color: #ffffff;
+    background-color: $white;
     border-bottom: solid 0.1px #eeeeee;
     padding: 0 40px;
     &__info {
@@ -118,7 +119,7 @@ header {
     background-color: #aaaaaa;
     &__text-area {
       float: left;
-      background-color: #fff;
+      background-color: $white;
       height: 100%;
       width: calc( 100% - 115px );
       & p {
@@ -143,7 +144,7 @@ header {
       & p {
         line-height: 50px;
         text-align: center;
-        color: #ffffff;
+        color: $white;
       }
     }
   }
