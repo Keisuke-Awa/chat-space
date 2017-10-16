@@ -24,6 +24,7 @@ header {
       &__name {
         float: left;
         padding-top: 30px;
+        font-weight: bold;
       }
       &__icons {
         float: right;
@@ -57,7 +58,7 @@ header {
     &__info {
       float: left;
       & h2 {
-      height: 20px;
+      font-size: 20px;
       margin: 35px 0 15px;
       color: #333333;
       }
@@ -92,6 +93,7 @@ header {
         & h3 {
           font-size: 16px;
           float: left;
+          font-weight: bold;
         }
         & p {
           font-size: 12px;
