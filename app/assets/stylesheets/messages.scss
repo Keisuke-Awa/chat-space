@@ -79,6 +79,14 @@ header {
         vertical-align: middle;
       }
     }
-
+  }
+  &__chat-area {
+    height: calc( 100vh - 170px );
+    padding: 0 40px;
+    background-color: #eeeeee;
+  }
+  &__send-box {
+    height: 50px;
+    padding: 10px 0 10px;
   }
 }
