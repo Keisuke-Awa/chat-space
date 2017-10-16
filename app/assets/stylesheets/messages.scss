@@ -1,8 +1,16 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$black: #333333;
+$white: #ffffff;
+$light-gray: #eeeeee;
+$dark-gray: #434a54;
+$silver-gray: #999999;
+$background-gray: #aaaaaa;
+$safe-color: #333333;
 $blue: #38aef0;
-$white: #ffffff:
+$dark-blue: #2f3e51;
+$deep-blue: #253141;
 
 header {
   background-color: $blue;
@@ -15,11 +23,11 @@ header {
   height: 100vh;
   float: left;
   color: $white;
-  background-color: #2f3e51;
+  background-color: $dark-blue;
     &__user {
       height: 100px;
       font-size: 16px;
-      background-color: #253141;
+      background-color: $deep-blue;
       padding: 0 20px;
       margin-bottom: 20px;
       &__name {
@@ -54,7 +62,7 @@ header {
   &__header {
     height: 100px;
     background-color: $white;
-    border-bottom: solid 0.1px #eeeeee;
+    border-bottom: solid 0.1px $light-gray;
     padding: 0 40px;
     &__info {
       float: left;
@@ -62,21 +70,20 @@ header {
       font-size: 20px;
       font-weight: bold;
       margin: 35px 0 15px;
-      color: #333333;
+      color: $safe-color;
       }
       & p {
         font-size: 12px;
-        color: #999999;
+        color: $silver-gray;
       }
     }
     &__button {
-      // display: table;
       float: right;
       border: 1px solid $blue;
       height: 40px;
       padding: 0 20px;
       margin-top: 28px;
-      color: #38aef0;
+      color: $blue;
       & p {
         text-align: center;
         line-height: 40px;
@@ -86,10 +93,10 @@ header {
   &__chat-area {
     height: calc( 100vh - 236px );
     padding: 46px 40px 0 40px;
-    background-color: #eeeeee;
+    background-color: $light-gray;
     &__message {
       margin-bottom: 40px;
-      color: #434a54;
+      color: $dark-gray;
       &__info {
         margin-bottom: 10px;
         & h3 {
@@ -101,7 +108,7 @@ header {
           font-size: 12px;
           float: left;
           margin-left: 10px;
-          color: #999999;
+          color: $silver-gray;
           margin-top: 4px;
         }
       }
@@ -116,7 +123,7 @@ header {
   &__send-box {
     height: 50px;
     padding: 20px 40px;
-    background-color: #aaaaaa;
+    background-color: $background-gray;
     &__text-area {
       float: left;
       background-color: $white;
@@ -127,7 +134,7 @@ header {
         line-height: 50px;
         float: left;
         font-size: 16px;
-        color: #434a54;
+        color: $dark-gray;
       }
       & i {
         line-height: 50px;
