@@ -43,23 +43,8 @@ header {
     }
 }
 
-ul {
-  margin-bottom: 40px;
-  li {
-    font-size: 15px;
-    margin-bottom: 5px;
-  }
-  p {
-    font-size: 11px;
-  }
-}
-
-
 .main-content {
-  float: left;
-  background-color: blue;
-  // width: 80%;
-  // height: 100vh;
-  // min-width: 300px;
+  float: right;
+  width: calc( 100vw - 380px );
   padding: 0 40px;
 }
