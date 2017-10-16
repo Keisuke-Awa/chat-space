@@ -84,6 +84,19 @@ header {
     height: calc( 100vh - 170px );
     padding: 0 40px;
     background-color: #eeeeee;
+    &__message {
+      &__info {
+        & h3 {
+          float: left;
+        }
+        & p {
+          float: left;
+        }
+      }
+      &__text {
+        clear: both;
+      }
+    }
   }
   &__send-box {
     height: 50px;
