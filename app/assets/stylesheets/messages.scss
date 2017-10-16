@@ -59,6 +59,7 @@ header {
       float: left;
       & h2 {
       font-size: 20px;
+      font-weight: bold;
       margin: 35px 0 15px;
       color: #333333;
       }
@@ -68,7 +69,7 @@ header {
       }
     }
     &__button {
-      display: table;
+      // display: table;
       float: right;
       border: 1px solid $blue;
       height: 40px;
@@ -76,8 +77,8 @@ header {
       margin-top: 28px;
       color: #38aef0;
       & p {
-        display: table-cell;
-        vertical-align: middle;
+        text-align: center;
+        line-height: 40px;
       }
     }
   }
@@ -104,7 +105,6 @@ header {
         }
       }
       &__text {
-        // clear: both;
         & p {
           margin-top: 10px;
           font-size: 14px;
@@ -117,13 +117,12 @@ header {
     padding: 20px 40px;
     background-color: #aaaaaa;
     &__text-area {
-      // display: table;
       float: left;
       background-color: #fff;
       height: 100%;
-      margin-left: 10px;
       width: calc( 100% - 135px );
       & p {
+        margin-left: 10px;
         line-height: 50px;
         float: left;
         font-size: 16px;
