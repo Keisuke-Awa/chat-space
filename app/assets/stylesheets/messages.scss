@@ -81,20 +81,31 @@ header {
     }
   }
   &__chat-area {
-    height: calc( 100vh - 170px );
-    padding: 0 40px;
+    height: calc( 100vh - 216px );
+    padding: 46px 40px 0 40px;
     background-color: #eeeeee;
     &__message {
+      margin-bottom: 40px;
+      color: #434a54;
       &__info {
+        margin-bottom: 10px;
         & h3 {
+          font-size: 16px;
           float: left;
         }
         & p {
+          font-size: 12px;
           float: left;
+          margin-left: 10px;
+          color: #999999;
         }
       }
       &__text {
-        clear: both;
+        // clear: both;
+        & p {
+        margin-top: 10px;
+          font-size: 14px;
+        }
       }
     }
   }
@@ -102,4 +113,10 @@ header {
     height: 50px;
     padding: 10px 0 10px;
   }
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }
