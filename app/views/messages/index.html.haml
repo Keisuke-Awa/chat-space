@@ -1,21 +1,27 @@
-%div{class: "side-bar"}
-  %div{class: "side-bar__user"}
+%header
+  %p チャットグループが作成されました
+
+%div.side-bar
+  %div.side-bar__user
     %p keisuke
-  %div{class: "side-bar__group"}
+    %i.fa.fa-cog
+  %div.side-bar__now-group
     %ul
-      %li sample1グループ
+      %li 現在のグループ
+      %p 最新のメッセージ
+  %div.side-bar__other-groups
+    %ul
+      %li その他①グループ
       %p まだメッセージはありません
-      %li sample2グループ
+      %li その他②グループ
       %p まだメッセージはありません
 
-
-
-%div{class: "main-content"}
-  %div{class: "main-content__header"}
+%div.main-content
+  %div.main-content__header
     %h2 sampleグループ
     %p member: keisuke
-  %div{class: "main-content__chat-space"}
+  %div.main-content__chat-space
     %h4 keisuke
     %p hello
-  %div{class: "main-content__message-box"}
+  %div.main-content__message-box
     %p メッセージ送信
