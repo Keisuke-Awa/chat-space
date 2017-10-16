@@ -46,5 +46,10 @@ header {
 .main-content {
   float: right;
   width: calc( 100vw - 380px );
+  height: 100vh;
   padding: 0 40px;
+  &__header {
+    height: 88px;
+    background-color: #ffffff;
+  }
 }
