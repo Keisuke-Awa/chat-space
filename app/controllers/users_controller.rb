@@ -5,5 +5,6 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.update
   end
 end
