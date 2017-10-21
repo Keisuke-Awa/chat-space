@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update
+    current_user.update(update_params)
+  end
+
+  private
+  def update_params
+    params(:user).permit(:name, :email)
   end
 end
