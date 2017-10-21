@@ -7,7 +7,8 @@
       %p keisuke
     .side-bar__user__icons
       %i.fa.fa-pencil-square-o
-      %i.fa.fa-cog
+      = link_to edit_user_path(current_user), class:'side-bar__user__icons--white' do
+        %i.fa.fa-cog
   .side-bar__groups
     .side-bar__groups__individual
       %h3 現在のグループ
