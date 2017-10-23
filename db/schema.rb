@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018131943) do
+ActiveRecord::Schema.define(version: 20171023091927) do
+
+  create_table "chat_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       default: "",                         null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["name"], name: "index_chat_groups_on_name", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "",                         null: false
@@ -22,7 +29,7 @@ ActiveRecord::Schema.define(version: 20171018131943) do
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "last_sign_in_ip",                                                          collation: "utf8_bin"
     t.string   "name",                   default: "",                         null: false
     t.datetime "created_at",             default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at",             default: -> { "CURRENT_TIMESTAMP" }, null: false
