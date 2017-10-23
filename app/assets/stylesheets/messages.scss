@@ -28,6 +28,9 @@ header {
       &__icons {
         float: right;
         padding-top: 32px;
+        &--white {
+          color: $white;
+        }
       }
     }
     &__groups {
