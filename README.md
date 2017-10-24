@@ -17,7 +17,7 @@ Things you may want to cover:
 |body|text|null: false|
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|chat_group_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -33,21 +33,24 @@ Things you may want to cover:
 
 ### Association
 - has_many :messages
-- has_many :groups, through: :group_users
+- has_many :groups, through: :chat_group_users
+- has_many :chat_group_users
 
-## groupsテーブル
+## chat_groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, unique: true|
 
 ### Association
-- has_many :users, through: :group_users
+-  has_many :messages
+-  has_many :users, through: :chat_group_users
+-  has_many :chat_group_users
 
 ## group_users table
 
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|chat_group_id|integer|null: false, foreign_key: true|
 
