@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20171023091927) do
     t.string   "name",       default: "",                         null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.index ["name"], name: "index_chat_groups_on_name", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
