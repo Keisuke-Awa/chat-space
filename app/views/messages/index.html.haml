@@ -8,15 +8,11 @@
       = link_to edit_user_path(current_user), class:'side-bar__user__icons--white' do
         %i.fa.fa-cog
   .side-bar__groups
-    .side-bar__groups__individual
-      %h3 現在のグループ
-      %p 最新のメッセージ
-    .side-bar__groups__individual
-      %h3 その他①グループ
-      %p まだメッセージはありません
-    .side-bar__groups__individual
-      %h3 その他②グループ
-      %p まだメッセージはありません
+    - @chat_groups.each do |group|
+      .side-bar__groups__individual
+        %h3<
+          group.name
+        %p まだメッセージはありません
 
 .main-content
   .main-content__header
