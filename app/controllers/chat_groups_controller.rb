@@ -5,12 +5,12 @@ class ChatGroupsController < ApplicationController
   end
 
   def create
-    chat_group = ChatGroup.new(chat_group_params)
+    @chat_group = ChatGroup.new(chat_group_params)
     respond_to do |format|
-      if chat_group.save
+      if @chat_group.save
         format.html { redirect_to root_path, notice: 'グループを作成しました' }
       else
-        format.html { redirect_to root_path, alert: '作成に失敗しました' }
+        format.html { render :new }
       end
     end
   end
