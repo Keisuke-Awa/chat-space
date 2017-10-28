@@ -1,11 +1,14 @@
 .chat-group-form
   %h1 新規チャットグループ
   = form_for @chat_group, id: 'new_chat_group', class:'new_chat_group' do |f|
-    .chat-group-form__errors
-      %h2
-        1件のエラーが発生しました。
-        %ul
-          %li エラーです
+    - if @chat_group.errors.any?
+      #error_explanation.chat-group-form__errors
+        %h2
+          #{ @chat_group.errors.count }件のエラーが発生しました。
+          %ul
+          - @chat_group.errors.full_messages.each do |msg|
+            %li<
+              = msg
 
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
