@@ -6,6 +6,23 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  activerecord:
+    errors:
+      messages:
+        taken: "がすでに存在します。"
+        record_invalid: "バリデーションに失敗しました。 %{errors}"
+    models:
+      user: ユーザー
+      chat_group: グループ
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: パスワード
+      chat_group:
+        name: "グループ名"
   date:
     abbr_day_names:
     - 日
