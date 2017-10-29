@@ -7,12 +7,10 @@ class ChatGroupsController < ApplicationController
 
   def create
     @chat_group = ChatGroup.new(chat_group_params)
-    respond_to do |format|
-      if @chat_group.save
-        format.html { redirect_to root_path, notice: 'グループを作成しました' }
-      else
-        format.html { render :new }
-      end
+    if @chat_group.save
+      redirect_to root_path, notice: 'グループを作成しました'
+    else
+      render :new
     end
   end
 
