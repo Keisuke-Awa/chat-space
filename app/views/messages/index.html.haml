@@ -1,19 +1,4 @@
-.side-bar
-  .side-bar__user
-    .side-bar__user__name
-      %p keisuke
-    .side-bar__user__icons
-      = link_to new_chat_group_path, class:'side-bar__user__icons--white' do
-        %i.fa.fa-pencil-square-o
-      = link_to edit_user_path(current_user), class:'side-bar__user__icons--white' do
-        %i.fa.fa-cog
-  .side-bar__groups
-    - @chat_groups.each do |chat_group|
-      .side-bar__groups__individual
-        %h3
-          = chat_group.name
-        %p
-          まだメッセージがありません
+= render 'layouts/parts/sidebar_left'
 
 .main-content
   .main-content__header
