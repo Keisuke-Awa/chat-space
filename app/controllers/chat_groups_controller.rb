@@ -6,7 +6,8 @@ class ChatGroupsController < ApplicationController
   end
 
   def create
-    @chat_group = ChatGroup.new(chat_group_params)
+    source = ChatGroup.new(chat_group_params)
+    @chat_group = ChatGroupDecorator.decorate(source)
     if @chat_group.save
       redirect_to root_path, notice: 'グループを作成しました'
     else
