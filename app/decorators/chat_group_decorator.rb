@@ -9,4 +9,8 @@ class ChatGroupDecorator < Draper::Decorator
     object.errors.count
   end
 
+  def error_messages
+    object.errors.full_messages
+  end
+
 end
