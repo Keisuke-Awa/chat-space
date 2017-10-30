@@ -11,8 +11,7 @@ class ChatGroupsController < ApplicationController
   end
 
   def create
-    source = ChatGroup.new(chat_group_params)
-    @chat_group = ChatGroupDecorator.decorate(source)
+    @chat_group = ChatGroup.new(chat_group_params).decorate
     if @chat_group.save
       redirect_to root_path, notice: 'グループを作成しました'
     else
@@ -32,8 +31,7 @@ class ChatGroupsController < ApplicationController
 
   private
   def set_chat_group
-    source = ChatGroup.find(params[:id])
-    @chat_group = ChatGroupDecorator.decorate(source)
+    @chat_group = ChatGroup.find(params[:id]).decorate
   end
 
   def chat_group_params
