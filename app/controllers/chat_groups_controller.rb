@@ -2,6 +2,10 @@ class ChatGroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_chat_group, only: [:edit, :update]
 
+  def index
+    @chat_groups = ChatGroupDecorator.decorate_collection(current_user.chat_groups)
+  end
+
   def new
     @chat_group = ChatGroup.new
   end
