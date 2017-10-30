@@ -1,5 +1,6 @@
 class ChatGroupsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_chat_group, only: [:edit, :update]
 
   def new
     @chat_group = ChatGroup.new
@@ -17,9 +18,19 @@ class ChatGroupsController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    if @chat_group.update(chat_group_params)
+      redirect_to root_path, notice: 'グループを編集しました'
+    else
+      render :edit
+    end
+  end
 
   private
+  def set_chat_group
+    @chat_group = ChatGroup.find(:id)
+  end
+
   def chat_group_params
     params.require(:chat_group).permit(:name, user_ids: [] )
   end
