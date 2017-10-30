@@ -28,7 +28,8 @@ class ChatGroupsController < ApplicationController
 
   private
   def set_chat_group
-    @chat_group = ChatGroup.find(:id)
+    source = ChatGroup.find(params[:id])
+    @chat_group = ChatGroupDecorator.decorate(source)
   end
 
   def chat_group_params
