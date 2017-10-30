@@ -1,7 +1,8 @@
 .side-bar
   .side-bar__user
     .side-bar__user__name
-      %p keisuke
+      %p
+        = current_user.name
     .side-bar__user__icons
       = link_to new_chat_group_path, class:'side-bar__user__icons--white' do
         %i.fa.fa-pencil-square-o
