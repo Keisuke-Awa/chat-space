@@ -7,7 +7,7 @@
           #{ @chat_group.errors.count }件のエラーが発生しました。
           %ul
           - @chat_group.errors.full_messages.each do |msg|
-            %li<
+            %li
               = msg
 
     .chat-group-form__field.clearfix
