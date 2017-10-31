@@ -26,4 +26,5 @@ class User < ApplicationRecord
 
   has_many :chat_group_users
   has_many :chat_groups, through: :chat_group_users
+  has_many :messages
 end
