@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     @chat_groups = ChatGroupDecorator.decorate_collection(current_user.chat_groups)
