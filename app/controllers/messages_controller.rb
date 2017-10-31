@@ -5,5 +5,11 @@ class MessagesController < ApplicationController
     @chat_groups = ChatGroupDecorator.decorate_collection(current_user.chat_groups)
   end
 
+  def create; end
+
+  private
+  def set_sidebar; end
+
+  def message_params; end
 end
 
