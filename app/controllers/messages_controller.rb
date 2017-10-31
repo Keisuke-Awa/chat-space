@@ -8,8 +8,7 @@ class MessagesController < ApplicationController
   def create; end
 
   private
-  def set_sidebar; end
-
   def message_params; end
+
 end
 
