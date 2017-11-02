@@ -2,7 +2,6 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
 
   def index
-    @chat_group = ChatGroup.find(params[:chat_group_id])
     @chat_groups = ChatGroupDecorator.decorate_collection(current_user.chat_groups)
     @message = Message.new
   end
@@ -18,6 +17,10 @@ class MessagesController < ApplicationController
   end
 
   private
+  def set_chat_group
+    @chat_group = ChatGroup.find(params[:chat_group_id]).decorate
+  end
+
   def message_params
     params.require(:message).permit(:body, :image).merge(chat_group_id: params[:chat_group_id], user_id: current_user.id)
   end
