@@ -114,18 +114,28 @@
     &__text-area {
       float: left;
       background-color: $white;
-      height: 100%;
-      width: calc( 100% - 115px );
-      & p {
-        margin-left: 10px;
-        line-height: 50px;
-        float: left;
-        font-size: 16px;
-        color: $dark-gray;
-      }
+      height: 50px;
+      padding-left: 10px;
+      width: calc( 100% - 175px );
+      // & p {
+      margin-left: 10px;
+      line-height: 50px;
+      float: left;
+      font-size: 16px;
+      color: $dark-gray;
+      border: none;
+      resize: none;
+      // }
+
+    }
+    &__image {
+      background-color: $white;
+      height: 50px;
+      float: left;
+      border: none;
+      padding-right: 5px;
       & i {
         line-height: 50px;
-        float: right;
         margin-right: 10px;
       }
     }
@@ -133,13 +143,10 @@
       float: left;
       width: 100px;
       height: 50px;
+      border-color: $sky-blue;
       background-color: $sky-blue;
       margin-left: 15px;
-      & p {
-        line-height: 50px;
-        text-align: center;
-        color: $white;
-      }
+      color: $white;
     }
   }
 }
