@@ -27,9 +27,10 @@
       .main-content__chat-area__message__text
         %p hello3
   .main-content__send-box
-    .main-content__send-box__text-area
-      %p メッセージを送信する
-      %i.fa.fa-picture-o
-    .main-content__send-box__button
-      %p Send
-
+    = form_for [@chat_group, @message] do |f|
+      = f.text_area :body, placeholder: 'メッセージを入力してください', class: 'main-content__send-box__text-area'
+      .main-content__send-box__image
+        = f.label :image, class:'main-content__send-box__image' do
+          %i.fa.fa-picture-o
+        = f.file_field :image, style: 'display: none;'
+      = f.submit 'Send', class: 'main-content__send-box__button'
