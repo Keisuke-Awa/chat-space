@@ -15,6 +15,8 @@ class Message < ApplicationRecord
   belongs_to :chat_group
   belongs_to :user
 
+  mount_uploader :image, ImageUploader
+
   validates :body_or_image, presence: true
 
   private
