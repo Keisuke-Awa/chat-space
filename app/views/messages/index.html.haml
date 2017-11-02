@@ -3,29 +3,24 @@
 .main-content
   .main-content__header
     .main-content__header__info
-      %h2 sampleグループ
-      %p member: keisuke
-    = link_to new_chat_group_path, class:'main-content__header__button' do
+      %h2
+        = @chat_group.name
+      %p member:
+      - @chat_group.users.each do |user|
+        = user.name
+    = link_to edit_chat_group_path(@chat_group), class:'main-content__header__button' do
       %p Edit
   .main-content__chat-area
-    .main-content__chat-area__message
-      .main-content__chat-area__message__info.clearfix
-        %h3 keisuke
-        %p 2017/10/16
-      .main-content__chat-area__message__text
-        %p hello
-    .main-content__chat-area__message
-      .main-content__chat-area__message__info.clearfix
-        %h3 keisuke
-        %p 2017/10/16
-      .main-content__chat-area__message__text
-        %p hello2
-    .main-content__chat-area__message
-      .main-content__chat-area__message__info.clearfix
-        %h3 keisuke
-        %p 2017/10/16
-      .main-content__chat-area__message__text
-        %p hello3
+    - @messages.each do |msg|
+      .main-content__chat-area__message
+        .main-content__chat-area__message__info.clearfix
+          %h3
+            = msg.user.name
+          %p
+            = msg.created_at
+        .main-content__chat-area__message__text
+          %p
+            = msg.body
   .main-content__send-box
     = form_for [@chat_group, @message] do |f|
       = f.text_area :body, placeholder: 'メッセージを入力してください', class: 'main-content__send-box__text-area'
