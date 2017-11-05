@@ -7,7 +7,8 @@
         = @chat_group.name
       %p member:
       - @chat_group.users.each do |user|
-        = user.name
+        %p
+          = user.name
     = link_to edit_chat_group_path(@chat_group), class:'main-content__header__button' do
       %p Edit
   .main-content__chat-area
@@ -20,7 +21,8 @@
             = msg.created_at
         .main-content__chat-area__message__text
           %p
-            = msg.body
+            = msg.body if msg.body
+          = image_tag msg.image if msg.image
   .main-content__send-box
     = form_for [@chat_group, @message] do |f|
       = f.text_area :body, placeholder: 'メッセージを入力してください', class: 'main-content__send-box__text-area'
