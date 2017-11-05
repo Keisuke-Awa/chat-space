@@ -10,8 +10,9 @@
         %i.fa.fa-cog
   .side-bar__groups
     - @chat_groups.each do |chat_group|
-      .side-bar__groups__individual
-        %h3
-          = chat_group.name
-        %p
-          まだメッセージがありません
+      = link_to chat_group_messages_path(chat_group) do
+        .side-bar__groups__individual
+          %h3
+            = chat_group.name
+          %p
+            まだメッセージがありません
