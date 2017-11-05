@@ -59,9 +59,13 @@
       margin: 35px 0 15px;
       color: $safe-color;
       }
-      & p {
+      & ul {
         font-size: 12px;
         color: $silver-gray;
+        & li {
+          display: inline-block;
+          padding-right: 5px;
+        }
       }
     }
     &__button {
@@ -97,6 +101,11 @@
           margin-left: 10px;
           color: $silver-gray;
           margin-top: 4px;
+        }
+        &--members {
+          & p {
+            float: left;
+          }
         }
       }
       &__text {
