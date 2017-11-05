@@ -5,10 +5,11 @@
     .main-content__header__info
       %h2
         = @chat_group.name
-      %p member:
-      - @chat_group.users.each do |user|
-        %p
-          = user.name
+      %ul
+        %li member:
+        - @chat_group.users.each do |user|
+          %li
+            = user.name
     = link_to edit_chat_group_path(@chat_group), class:'main-content__header__button' do
       %p Edit
   .main-content__chat-area
