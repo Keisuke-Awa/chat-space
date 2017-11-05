@@ -22,7 +22,7 @@
         .main-content__chat-area__message__text
           %p
             = msg.body if msg.body
-          = image_tag msg.image if msg.image
+          = image_tag msg.image, class:'main-content__chat-area__message__image' if msg.image
   .main-content__send-box
     = form_for [@chat_group, @message] do |f|
       = f.text_area :body, placeholder: 'メッセージを入力してください', class: 'main-content__send-box__text-area'
