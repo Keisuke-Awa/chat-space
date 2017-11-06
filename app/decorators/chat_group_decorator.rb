@@ -13,4 +13,11 @@ class ChatGroupDecorator < Draper::Decorator
     object.errors.full_messages
   end
 
+  def recent_message
+    if object.messages.present?
+      object.messages.last.body.present? ? object.messages.last.body : '画像が投稿されています'
+    else
+      'まだメッセージがありません'
+    end
+  end
 end
