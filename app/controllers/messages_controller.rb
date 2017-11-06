@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     @messages = @chat_group.messages.includes(:user).order('messages.id ASC')
     @message = Message.new
-    @chat_groups = ChatGroupDecorator.decorate_collection(current_user.chat_groups)
+    @chat_groups = ChatGroupDecorator.decorate_collection(current_user.chat_groups.includes(:messages))
   end
 
   def create
