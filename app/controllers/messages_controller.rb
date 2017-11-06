@@ -11,6 +11,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.chat_group_id = params[:chat_group_id]
+    @message.user_id = current_user.id
     if @message.save
       @messages = @chat_group.messages.includes(:user).order(id: :asc)
       redirect_to chat_group_messages_path(@chat_group), notice: 'メッセージが作成されました'
@@ -21,11 +23,11 @@ class MessagesController < ApplicationController
 
   private
   def set_chat_group
-    @chat_group = ChatGroup.find(params[:chat_group_id])
+    @chat_group = ChatGroup.find(params[:chat_group_id]).decorate
   end
 
   def message_params
-    params.require(:message).permit(:body, :image).merge(chat_group_id: params[:chat_group_id], user_id: current_user.id)
+    params.require(:message).permit(:body, :image).merge(chat_group_id: , user_id: current_user.id)
   end
 
 end
