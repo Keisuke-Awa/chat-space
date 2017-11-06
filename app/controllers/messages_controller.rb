@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
       @messages = @chat_group.messages.includes(:user).order('messages.id ASC')
       redirect_to chat_group_messages_path(@chat_group), notice: 'メッセージが作成されました'
     else
-      redirect_to chat_group_messages_path(@chat_group), alert: @message.errors.full_messages.first
+      redirect_to chat_group_messages_path(@chat_group), alert: 'メッセージを入力してください'
     end
   end
 
