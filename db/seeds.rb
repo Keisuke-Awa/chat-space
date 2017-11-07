@@ -14,3 +14,10 @@ require 'faker'
         password: Faker::Internet.password
       )
 end
+
+Message.create(user_id: 1, chat_group_id: 1, body:'seedtest!!!')
+Message.create(user_id: 1, chat_group_id: 1, body:'seedてすと')
+Message.create(user_id: 2, chat_group_id: 1, body:'seedいえええい')
+Message.create(user_id: 2, chat_group_id: 1, body:'seddddddd')
+Message.create(user_id: 3, chat_group_id: 1, body:'si-do')
+Message.create(user_id: 3, chat_group_id: 1, body:'初期作成')
