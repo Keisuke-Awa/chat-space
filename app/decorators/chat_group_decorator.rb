@@ -14,10 +14,7 @@ class ChatGroupDecorator < Draper::Decorator
   end
 
   def latest_message
-    if object.messages.present?
-      object.messages.last.body.present? ? object.messages.last.body : '画像が投稿されています'
-    else
-      'まだメッセージがありません'
-    end
+    return 'まだメッセージがありません' unless object.messages.present?
+    object.messages.last.body.present? ? object.messages.last.body : '画像が投稿されています'
   end
 end

@@ -17,9 +17,9 @@
       .main-content__chat-area__message
         .main-content__chat-area__message__info.clearfix
           %h3
-            = msg.user.name
+            = msg.user_name
           %p
-            = msg.created_at.strftime('%Y年%m月%d日 %H:%M')
+            = msg.created_at_time
         .main-content__chat-area__message__text
           %p
             = msg.body if msg.body
