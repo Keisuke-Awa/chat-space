@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107110002) do
+ActiveRecord::Schema.define(version: 20171107144523) do
 
   create_table "chat_group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "chat_group_id"
     t.datetime "created_at",    default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at",    default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["chat_group_id", "user_id"], name: "index_chat_group_users_on_chat_group_id_and_user_id", unique: true, using: :btree
     t.index ["chat_group_id"], name: "index_chat_group_users_on_chat_group_id", using: :btree
     t.index ["user_id"], name: "index_chat_group_users_on_user_id", using: :btree
   end
