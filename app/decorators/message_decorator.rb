@@ -9,4 +9,12 @@ class MessageDecorator < Draper::Decorator
     object.created_at.strftime('%Y年%m月%d日 %H:%M')
   end
 
+  def body
+    object.body if object.body
+  end
+
+  def image
+    object.image ? object.image : ''
+  end
+
 end
