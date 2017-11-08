@@ -10,11 +10,11 @@ class MessageDecorator < Draper::Decorator
   end
 
   def body
-    object.body if object.body
+    object.body.to_s
   end
 
   def image
-    object.image ? object.image : ''
+    object.image.present? ? object.image : ''
   end
 
 end
