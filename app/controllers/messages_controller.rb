@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :set_chat_group, only: [:index, :create]
 
   def index
-    messages = @chat_group.messages.includes(:user).order(id: :asc)
+    messages = @chat_group.messages.includes(:user)
     @messages = MessageDecorator.decorate_collection(messages)
     @message = Message.new
     chat_groups = current_user.chat_groups.includes(:messages)
@@ -12,8 +12,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.chat_group_id = params[:chat_group_id]
-    @message.user_id = current_user.id
+    @message.chat_group = @chat_group.object
+    @message.user = current_user
     if @message.save
       redirect_to chat_group_messages_path(@chat_group), notice: 'メッセージが作成されました'
     else
