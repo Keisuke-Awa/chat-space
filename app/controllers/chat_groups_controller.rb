@@ -3,7 +3,8 @@ class ChatGroupsController < ApplicationController
   before_action :set_chat_group, only: [:edit, :update]
 
   def index
-    @chat_groups = ChatGroupDecorator.decorate_collection(current_user.chat_groups)
+    chat_groups = current_user.chat_groups.includes(:messages)
+    @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
   end
 
   def new
