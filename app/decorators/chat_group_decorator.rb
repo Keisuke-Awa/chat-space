@@ -5,10 +5,6 @@ class ChatGroupDecorator < Draper::Decorator
     object.name
   end
 
-  def users
-    object.users
-  end
-
   def errors_count
     object.errors.count
   end
