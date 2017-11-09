@@ -17,4 +17,4 @@
 .byebug_history
 test/
 public/
-/spec/factories/images/
+/spec/fixtures/
