@@ -3,7 +3,8 @@ class ChatGroupsController < ApplicationController
   before_action :set_chat_group, only: [:edit, :update]
 
   def index
-    @chat_groups = ChatGroupDecorator.decorate_collection(current_user.chat_groups)
+    chat_groups = current_user.chat_groups.includes(:messages)
+    @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
   end
 
   def new
@@ -13,7 +14,7 @@ class ChatGroupsController < ApplicationController
   def create
     @chat_group = ChatGroup.new(chat_group_params).decorate
     if @chat_group.save
-      redirect_to root_path, notice: 'グループを作成しました'
+      redirect_to chat_group_messages_path(@chat_group), notice: 'グループを作成しました'
     else
       render :new
     end
@@ -23,7 +24,7 @@ class ChatGroupsController < ApplicationController
 
   def update
     if @chat_group.update(chat_group_params)
-      redirect_to root_path, notice: 'グループを編集しました'
+      redirect_to chat_group_messages_path(@chat_group), notice: 'グループを編集しました'
     else
       render :edit
     end

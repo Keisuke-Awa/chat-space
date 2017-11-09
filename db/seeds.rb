@@ -5,12 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
 
-20.times do
-     User.create(
-        name: Faker::HarryPotter.unique.character,
-        email: Faker::Internet.email(Faker::HarryPotter.unique.character),
-        password: Faker::Internet.password
-      )
-end
+require './db/seeds/user.rb'
+require './db/seeds/message.rb'

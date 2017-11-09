@@ -65,3 +65,7 @@ gem "devise"
 
 gem 'draper'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
