@@ -6,7 +6,7 @@ FactoryBot.define do
     association :user,       factory: :user
     association :chat_group, factory: :chat_group
     body              { Faker::HarryPotter.quote }
-    image             { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/fixtures/ringo.jpg')) }
+    image             { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/ringo.jpg')) }
   end
 
 end
