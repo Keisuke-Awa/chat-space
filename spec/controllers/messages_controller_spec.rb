@@ -9,14 +9,18 @@ describe MessagesController do
     context "when user signed in" do
       before do
         login_user user
+        get :index, chat_group_id: chat_group.id
       end
 
       it "assigns the requested chat_group to @chat_group" do
-        get :index, chat_group_id: chat_group.id
+        # get :index, chat_group_id: chat_group.id
         expect(assigns(:chat_group)).to eq chat_group
       end
 
       it "assigns the requested chat_groups to @chat_groups" do
+        # chat_groups = create_list(:chat_groups, users: [user])
+        # chat_groups << chat_group
+
 
       end
 
@@ -24,7 +28,7 @@ describe MessagesController do
       end
 
       it "renders the :index template " do
-        get :index, chat_group_id: chat_group.id
+        # get :index, chat_group_id: chat_group.id
         expect(response).to render_template :index
       end
 
