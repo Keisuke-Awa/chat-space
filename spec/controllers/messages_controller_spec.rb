@@ -17,7 +17,7 @@ describe MessagesController do
       end
 
       it "assigns the requested chat_groups to @chat_groups" do
-        expect(assigns(:chat_groups)).to eq chat_groups
+        expect(assigns(:chat_groups)).to be_decorated
       end
 
       it "assigns the requested messages to @messages" do
