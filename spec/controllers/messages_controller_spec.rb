@@ -2,33 +2,34 @@ require 'rails_helper'
 
 describe MessagesController do
   let(:user) { create(:user) }
-  let!(:chat_group) { create(:chat_group, users:[user]) }
+  let!(:chat_groups) { create_list(:chat_group, 5) }
 
 
   describe 'GET #index' do
     context "when user signed in" do
       before do
         login_user user
-        get :index, chat_group_id: chat_group.id
+        get :index, params: { chat_group_id: chat_groups.first.id }
       end
 
       it "assigns the requested chat_group to @chat_group" do
-        # get :index, chat_group_id: chat_group.id
-        expect(assigns(:chat_group)).to eq chat_group
+        expect(assigns(:chat_group)).to eq chat_groups.first
       end
 
       it "assigns the requested chat_groups to @chat_groups" do
-        # chat_groups = create_list(:chat_groups, users: [user])
-        # chat_groups << chat_group
-
-
+        expect(assigns(:chat_groups)).to eq chat_groups
       end
 
       it "assigns the requested messages to @messages" do
+        messages = create_list(:message, 5, chat_group: chat_groups.first)
+        expect(assigns(:messages)).to eq messages
+      end
+
+      it "assigns a new message to @message" do
+        expect(assigns(:message)).to be_a_new Message
       end
 
       it "renders the :index template " do
-        # get :index, chat_group_id: chat_group.id
         expect(response).to render_template :index
       end
 
