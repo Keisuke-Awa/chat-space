@@ -75,7 +75,7 @@ describe MessagesController do
 
     context "when user not signed in" do
       it "redirect to new_user_session_path " do
-        get :index, params: { chat_group_id: chat_groups.first.id }
+        post :create, params: { chat_group_id: chat_groups.first.id }
         expect(response).to redirect_to new_user_session_path
       end
     end
