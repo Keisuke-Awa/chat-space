@@ -3,7 +3,7 @@ require 'faker'
 FactoryBot.define do
 
   factory :user do
-    name                     { Faker::HarryPotter.character }
+    name                     { Faker::Name.first_name }
     email                    { Faker::Internet.email }
     password                 { Faker::Internet.password(8) }
   end
