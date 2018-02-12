@@ -81,7 +81,7 @@ describe MessagesController do
           }.to change(Message, :count).by(0)
         end
 
-        it "redirects to the :index template with flash notice" do
+        it "redirects to the :index template with flash alert" do
           post :create, params: { chat_group_id: chat_groups.first.id, message: message_params }
           chat_group = chat_groups.first
           expect(response).to redirect_to chat_group_messages_path(chat_group)
