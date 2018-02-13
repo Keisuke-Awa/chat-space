@@ -74,18 +74,18 @@ describe MessagesController do
         let(:message_params) { attributes_for(:message, body: nil, image: nil) }
 
         it "assigns the requested chat_group to @chat_group" do
-          post :create, params: { chat_group_id: chat_group.id, message: message_params }
+          subject.call
           expect(assigns(:chat_group)).to eq chat_group
         end
 
         it "cannot create a new message" do
           expect {
-            post :create, params: { chat_group_id: chat_group.id, message: message_params }
+            subject.call
           }.to change(Message, :count).by(0)
         end
 
         it "redirects to the :index template with flash alert" do
-          post :create, params: { chat_group_id: chat_group.id, message: message_params }
+          subject.call
           expect(response).to redirect_to chat_group_messages_path(chat_group)
           expect(flash[:alert]).to be_present
         end
@@ -94,8 +94,9 @@ describe MessagesController do
     end
 
     context "when user not signed in" do
+      let(:message_params) { attributes_for(:message) }
       it "redirect to new_user_session_path " do
-        post :create, params: { chat_group_id: chat_group.id }
+        subject.call
         expect(response).to redirect_to new_user_session_path
       end
     end
