@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe MessagesController do
   let(:user) { create(:user) }
-  let!(:chat_groups) { create_list(:chat_group, 5) }
 
 
   describe 'GET #index' do
+    let!(:chat_groups) { create_list(:chat_group, 5) }
     context "when user signed in" do
       before do
         login_user user
