@@ -50,19 +50,18 @@ describe MessagesController do
         let(:message_params) { attributes_for(:message) }
 
         it "assigns the requested chat_group to @chat_group" do
-          post :create, params: { chat_group_id: chat_groups.first.id, message: message_params }
-          expect(assigns(:chat_group)).to eq chat_groups.first
+          post :create, params: { chat_group_id: chat_group.id, message: message_params }
+          expect(assigns(:chat_group)).to eq chat_group
         end
 
         it "creates a new message" do
           expect {
-            post :create, params: { chat_group_id: chat_groups.first.id, message: message_params }
+            post :create, params: { chat_group_id: chat_group.id, message: message_params }
           }.to change(Message, :count).by(1)
         end
 
         it "redirects to the :index template with flash notice" do
-          post :create, params: { chat_group_id: chat_groups.first.id, message: message_params }
-          chat_group = chat_groups.first
+          post :create, params: { chat_group_id: chat_group.id, message: message_params }
           expect(response).to redirect_to chat_group_messages_path(chat_group)
           expect(flash[:notice]).to be_present
         end
@@ -72,19 +71,18 @@ describe MessagesController do
         let(:message_params) { attributes_for(:message, body: nil, image: nil) }
 
         it "assigns the requested chat_group to @chat_group" do
-          post :create, params: { chat_group_id: chat_groups.first.id, message: message_params }
-          expect(assigns(:chat_group)).to eq chat_groups.first
+          post :create, params: { chat_group_id: chat_group.id, message: message_params }
+          expect(assigns(:chat_group)).to eq chat_group
         end
 
         it "cannot create a new message" do
           expect {
-            post :create, params: { chat_group_id: chat_groups.first.id, message: message_params }
+            post :create, params: { chat_group_id: chat_group.id, message: message_params }
           }.to change(Message, :count).by(0)
         end
 
         it "redirects to the :index template with flash alert" do
-          post :create, params: { chat_group_id: chat_groups.first.id, message: message_params }
-          chat_group = chat_groups.first
+          post :create, params: { chat_group_id: chat_group.id, message: message_params }
           expect(response).to redirect_to chat_group_messages_path(chat_group)
           expect(flash[:alert]).to be_present
         end
@@ -94,7 +92,7 @@ describe MessagesController do
 
     context "when user not signed in" do
       it "redirect to new_user_session_path " do
-        post :create, params: { chat_group_id: chat_groups.first.id }
+        post :create, params: { chat_group_id: chat_group.id }
         expect(response).to redirect_to new_user_session_path
       end
     end
