@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  body          :text(65535)
-#  image         :string(255)
+#  image         :string(255)      default("")
 #  user_id       :integer
 #  chat_group_id :integer
 #  created_at    :datetime         not null
