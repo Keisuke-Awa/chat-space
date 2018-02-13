@@ -66,7 +66,7 @@ describe MessagesController do
         it "redirects to the :index template with flash notice" do
           subject.call
           expect(response).to redirect_to chat_group_messages_path(chat_group)
-          expect(flash[:notice]).to be_present
+          expect(flash[:notice]).to eq('メッセージが作成されました')
         end
       end
 
@@ -87,7 +87,7 @@ describe MessagesController do
         it "redirects to the :index template with flash alert" do
           subject.call
           expect(response).to redirect_to chat_group_messages_path(chat_group)
-          expect(flash[:alert]).to be_present
+          expect(flash[:alert]).to eq('メッセージを入力してください')
         end
       end
 
