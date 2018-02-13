@@ -6,10 +6,10 @@ describe MessagesController do
 
   describe 'GET #index' do
     let!(:chat_groups) { create_list(:chat_group, 5) }
+    let!(:chat_group) { chat_groups.first }
     context "when user signed in" do
       before do
         login_user user
-        chat_group = chat_groups.first
         get :index, params: { chat_group_id: chat_group.id }
       end
 
@@ -22,7 +22,7 @@ describe MessagesController do
       end
 
       it "assigns the requested messages to @messages" do
-        messages = create_list(:message, 5, chat_group: chat_groups.first)
+        messages = create_list(:message, 5, chat_group: chat_group)
         expect(assigns(:messages)).to eq messages
       end
 
@@ -38,7 +38,7 @@ describe MessagesController do
 
     context "when user not signed in" do
       it "redirect to new_user_session_path " do
-        get :index, params: { chat_group_id: chat_groups.first.id }
+        get :index, params: { chat_group_id: chat_group.id }
         expect(response).to redirect_to new_user_session_path
       end
     end
