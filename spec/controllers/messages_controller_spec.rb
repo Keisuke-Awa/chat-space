@@ -13,17 +13,15 @@ describe MessagesController do
         get :index, params: { chat_group_id: chat_group.id }
       end
 
-      it "assigns the requested chat_group to @chat_group" do
+      it "assigns the requested chat_group to @chat_group and to be decorated" do
         expect(assigns(:chat_group)).to eq chat_group
-      end
-
-      it "@chat_group is decorated" do
         expect(assigns(:chat_group)).to be_decorated
       end
 
-      it "assigns the requested messages to @messages" do
+      it "assigns the requested messages to @messages and to be decorated" do
         messages = create_list(:message, 5, chat_group: chat_group)
         expect(assigns(:messages)).to eq messages
+        expect(assigns(:messages)).to be_decorated
       end
 
       it "assigns a new message to @message" do
@@ -57,9 +55,10 @@ describe MessagesController do
       context "with valid message attributes" do
         let(:message_params) { attributes_for(:message) }
 
-        it "assigns the requested chat_group to @chat_group" do
+        it "assigns the requested chat_group to @chat_group and to be decorated" do
           subject.call
           expect(assigns(:chat_group)).to eq chat_group
+          expect(assigns(:chat_group)).to be_decorated
         end
 
         it "creates a new message" do
@@ -78,9 +77,10 @@ describe MessagesController do
       context "with invalid message attributes" do
         let(:message_params) { attributes_for(:message, body: nil, image: nil) }
 
-        it "assigns the requested chat_group to @chat_group" do
+        it "assigns the requested chat_group to @chat_group and to be decorated" do
           subject.call
           expect(assigns(:chat_group)).to eq chat_group
+          expect(assigns(:chat_group)).to be_decorated
         end
 
         it "cannot create a new message" do
