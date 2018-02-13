@@ -9,11 +9,16 @@ describe MessagesController do
     context "when user signed in" do
       before do
         login_user user
-        get :index, params: { chat_group_id: chat_groups.first.id }
+        chat_group = chat_groups.first
+        get :index, params: { chat_group_id: chat_group.id }
       end
 
       it "assigns the requested chat_group to @chat_group" do
-        expect(assigns(:chat_group)).to eq chat_groups.first
+        expect(assigns(:chat_group)).to eq chat_group
+      end
+
+      it "@chat_group is decorated" do
+        expect(assigns(:chat_group)).to be_decorated
       end
 
       it "assigns the requested messages to @messages" do
