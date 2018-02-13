@@ -41,6 +41,9 @@ describe MessagesController do
 
   describe 'GET #create' do
     let!(:chat_group) { create(:chat_group) }
+    subject {
+      Proc.new { post :create, params: { chat_group_id: chat_group.id, message: message_params } }
+    }
     context "when user signed in" do
       before do
         login_user user
@@ -50,18 +53,18 @@ describe MessagesController do
         let(:message_params) { attributes_for(:message) }
 
         it "assigns the requested chat_group to @chat_group" do
-          post :create, params: { chat_group_id: chat_group.id, message: message_params }
+          subject.call
           expect(assigns(:chat_group)).to eq chat_group
         end
 
         it "creates a new message" do
-          expect {
-            post :create, params: { chat_group_id: chat_group.id, message: message_params }
+          expect{
+            subject.call
           }.to change(Message, :count).by(1)
         end
 
         it "redirects to the :index template with flash notice" do
-          post :create, params: { chat_group_id: chat_group.id, message: message_params }
+          subject.call
           expect(response).to redirect_to chat_group_messages_path(chat_group)
           expect(flash[:notice]).to be_present
         end
