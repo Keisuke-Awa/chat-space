@@ -40,6 +40,7 @@ describe MessagesController do
   end
 
   describe 'GET #create' do
+    let!(:chat_group) { create(:chat_group) }
     context "when user signed in" do
       before do
         login_user user
