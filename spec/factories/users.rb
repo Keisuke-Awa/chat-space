@@ -29,7 +29,11 @@ FactoryBot.define do
 
     after(:create) do |user|
       5.times do
-        create(:chat_group_user, user: user, chat_group: create(:chat_group))
+        group = create(:chat_group)
+        create(:chat_group_user, user: user, chat_group: group)
+        3.times do
+          create(:message, user: user, chat_group: group)
+        end
       end
     end
   end

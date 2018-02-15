@@ -5,23 +5,33 @@ describe MessagesController do
 
 
   describe 'GET #index' do
-    let!(:chat_groups) { create_list(:chat_group, 5) }
+    let!(:chat_groups) { user.chat_groups }
     let!(:chat_group) { chat_groups.first }
+    # let!(:messages) { create_list(:message, 5, chat_group: chat_group) }
     context "when user signed in" do
       before do
         login_user user
         get :index, params: { chat_group_id: chat_group.id }
       end
 
-      it "assigns the requested chat_group to @chat_group and to be decorated" do
+      it "assigns the requested chat_group to @chat_group" do
         expect(assigns(:chat_group)).to eq chat_group
-        expect(assigns(:chat_group)).to be_decorated
       end
 
-      it "assigns the requested messages to @messages and to be decorated" do
-        messages = create_list(:message, 5, chat_group: chat_group)
+      it "@chat_group is decorated with ChatGroupDecorator" do
+        expect(assigns(:chat_group)).to be_decorated_with ChatGroupDecorator
+      end
+
+      it "assigns the requested messages to @messages" do
         expect(assigns(:messages)).to eq messages
-        expect(assigns(:messages)).to be_decorated
+      end
+
+      it "@messages are decorated with MessageDecorator" do
+        expect(assigns(:messages)).to be_decorated_with MessageDecorator
+      end
+
+      it "@messages are decorated with MessageDecorator" do
+        expect(assigns(:chat_groups)).to be_decorated_with ChatGroupDecorator
       end
 
       it "assigns a new message to @message" do
