@@ -5,9 +5,9 @@ describe MessagesController do
 
 
   describe 'GET #index' do
-    let!(:chat_groups) { user.chat_groups }
-    let!(:chat_group) { chat_groups.first }
-    # let!(:messages) { create_list(:message, 5, chat_group: chat_group) }
+    # let!(:chat_groups) { user.chat_groups }
+    let!(:chat_group) { user.chat_groups.first }
+    # let!(:messages) { chat_group.messages }
     context "when user signed in" do
       before do
         login_user user
@@ -30,8 +30,12 @@ describe MessagesController do
         expect(assigns(:messages)).to be_decorated_with MessageDecorator
       end
 
-      it "@messages are decorated with MessageDecorator" do
-        expect(assigns(:chat_groups)).to be_decorated_with ChatGroupDecorator
+      it "assigns the requested chat_groups to @chat_groups" do
+        expect(assigns(:chat_groups)).to eq user.chat_groups
+      end
+
+      it "@chat_groups are decorated with ChatGroupsDecorator" do
+        expect(assigns(:chat_groups)).to be_decorated_with
       end
 
       it "assigns a new message to @message" do
@@ -65,10 +69,13 @@ describe MessagesController do
       context "with valid message attributes" do
         let(:message_params) { attributes_for(:message) }
 
-        it "assigns the requested chat_group to @chat_group and to be decorated" do
+        it "assigns the requested chat_group to @chat_group" do
           subject.call
           expect(assigns(:chat_group)).to eq chat_group
-          expect(assigns(:chat_group)).to be_decorated
+        end
+
+        it "@chat_group is decorated with ChatGroupDecorator" do
+          expect(assigns(:chat_group)).to be_decorated_with ChatGroupDecorator
         end
 
         it "creates a new message" do
@@ -87,10 +94,13 @@ describe MessagesController do
       context "with invalid message attributes" do
         let(:message_params) { attributes_for(:message, body: nil, image: nil) }
 
-        it "assigns the requested chat_group to @chat_group and to be decorated" do
+        it "assigns the requested chat_group to @chat_group" do
           subject.call
           expect(assigns(:chat_group)).to eq chat_group
-          expect(assigns(:chat_group)).to be_decorated
+        end
+
+        it "@chat_group is decorated with ChatGroupDecorator" do
+          expect(assigns(:chat_group)).to be_collection_decorated_with ChatGroupDecorator
         end
 
         it "cannot create a new message" do
