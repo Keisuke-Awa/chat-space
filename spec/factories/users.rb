@@ -26,6 +26,10 @@ FactoryBot.define do
     name                     { Faker::Name.first_name }
     email                    { Faker::Internet.email }
     password                 { Faker::Internet.password(8) }
+
+    after(:create) do |user|
+      create(:chat_group_user, user: user, group: create(:group))
+    end
   end
 
 end
