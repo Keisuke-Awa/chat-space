@@ -28,7 +28,9 @@ FactoryBot.define do
     password                 { Faker::Internet.password(8) }
 
     after(:create) do |user|
-      create(:chat_group_user, user: user, group: create(:group))
+      5.times do
+        create(:chat_group_user, user: user, group: create(:group))
+      end
     end
   end
 
