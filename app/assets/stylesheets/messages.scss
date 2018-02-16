@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .side-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
   width: 300px;
   height: 100vh;
   float: left;
@@ -48,7 +52,12 @@
   float: right;
   width: calc( 100vw - 300px );
   height: 100vh;
+  position: relative;
   &__header {
+    position: fixed;
+    width: calc( 100vw - 380px );
+    top: 0;
+    right: 0;
     height: 100px;
     background-color: $white;
     border-bottom: solid 0.1px $light-gray;
@@ -84,8 +93,7 @@
     }
   }
   &__chat-area {
-    height: calc( 100vh - 236px );
-    padding: 46px 40px 0 40px;
+    padding: 46px 40px 100px 40px;
     background-color: $light-gray;
     &__message {
       margin-bottom: 40px;
