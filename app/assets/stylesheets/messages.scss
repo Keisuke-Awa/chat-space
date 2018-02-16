@@ -52,6 +52,7 @@
   width: calc( 100vw - 300px );
   height: 100vh;
   position: relative;
+  background-color: $light-gray;
   &__header {
     position: fixed;
     width: calc( 100vw - 380px );
@@ -94,6 +95,7 @@
   &__chat-area {
     padding: 46px 40px 100px 40px;
     background-color: $light-gray;
+    overflow: hidden;
     &__message {
       margin-bottom: 40px;
       color: $dark-gray;
