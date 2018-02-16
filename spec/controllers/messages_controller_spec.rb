@@ -27,7 +27,7 @@ describe MessagesController do
       end
 
       it "@messages are decorated with MessageDecorator" do
-        expect(assigns(:messages)).to be_decorated_with MessageDecorator
+        expect(assigns(:messages)).to be_decorated_with Draper::CollectionDecorator
       end
 
       it "assigns the requested chat_groups to @chat_groups" do
@@ -35,7 +35,7 @@ describe MessagesController do
       end
 
       it "@chat_groups are decorated with ChatGroupsDecorator" do
-        expect(assigns(:chat_groups)).to be_decorated_with
+        expect(assigns(:chat_groups)).to be_decorated_with Draper::CollectionDecorator
       end
 
       it "assigns a new message to @message" do
@@ -128,3 +128,5 @@ describe MessagesController do
   end
 
 end
+
+
