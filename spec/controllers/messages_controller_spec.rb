@@ -57,9 +57,6 @@ describe MessagesController do
 
   describe 'GET #create' do
     let!(:chat_group) { create(:chat_group) }
-    subject {
-      Proc.new { post :create, params: { chat_group_id: chat_group.id, message: message_params } }
-    }
     context "when user signed in" do
       before do
         login_user user
@@ -79,7 +76,7 @@ describe MessagesController do
 
         it "creates a new message" do
           expect{
-            subject.call
+            post :create, params: { chat_group_id: chat_group.id, message: message_params }
           }.to change(Message, :count).by(1)
         end
 
@@ -102,7 +99,7 @@ describe MessagesController do
 
         it "cannot create a new message" do
           expect {
-            subject.call
+            post :create, params: { chat_group_id: chat_group.id, message: message_params }
           }.to change(Message, :count).by(0)
         end
 
