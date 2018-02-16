@@ -5,9 +5,8 @@ describe MessagesController do
 
 
   describe 'GET #index' do
-    # let!(:chat_groups) { user.chat_groups }
     let!(:chat_group) { user.chat_groups.first }
-    # let!(:messages) { chat_group.messages }
+    let!(:messages) { chat_group.messages }
     context "when user signed in" do
       before do
         login_user user
@@ -75,6 +74,7 @@ describe MessagesController do
         end
 
         it "@chat_group is decorated with ChatGroupDecorator" do
+          subject.call
           expect(assigns(:chat_group)).to be_decorated_with ChatGroupDecorator
         end
 
@@ -100,7 +100,8 @@ describe MessagesController do
         end
 
         it "@chat_group is decorated with ChatGroupDecorator" do
-          expect(assigns(:chat_group)).to be_collection_decorated_with ChatGroupDecorator
+          subject.call
+          expect(assigns(:chat_group)).to be_decorated_with ChatGroupDecorator
         end
 
         it "cannot create a new message" do
