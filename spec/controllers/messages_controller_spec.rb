@@ -63,18 +63,17 @@ describe MessagesController do
     context "when user signed in" do
       before do
         login_user user
+        post :create, params: { chat_group_id: chat_group.id, message: message_params }
       end
 
       context "with valid message attributes" do
         let(:message_params) { attributes_for(:message) }
 
         it "assigns the requested chat_group to @chat_group" do
-          subject.call
           expect(assigns(:chat_group)).to eq chat_group
         end
 
         it "@chat_group is decorated with ChatGroupDecorator" do
-          subject.call
           expect(assigns(:chat_group)).to be_decorated_with ChatGroupDecorator
         end
 
@@ -85,7 +84,6 @@ describe MessagesController do
         end
 
         it "redirects to the :index template with flash notice" do
-          subject.call
           expect(response).to redirect_to chat_group_messages_path(chat_group)
           expect(flash[:notice]).to eq('メッセージが作成されました')
         end
@@ -95,12 +93,10 @@ describe MessagesController do
         let(:message_params) { attributes_for(:message, body: nil, image: nil) }
 
         it "assigns the requested chat_group to @chat_group" do
-          subject.call
           expect(assigns(:chat_group)).to eq chat_group
         end
 
         it "@chat_group is decorated with ChatGroupDecorator" do
-          subject.call
           expect(assigns(:chat_group)).to be_decorated_with ChatGroupDecorator
         end
 
@@ -111,7 +107,6 @@ describe MessagesController do
         end
 
         it "redirects to the :index template with flash alert" do
-          subject.call
           expect(response).to redirect_to chat_group_messages_path(chat_group)
           expect(flash[:alert]).to eq('メッセージを入力してください')
         end
@@ -122,7 +117,7 @@ describe MessagesController do
     context "when user not signed in" do
       let(:message_params) { attributes_for(:message) }
       it "redirect to new_user_session_path " do
-        subject.call
+        post :create, params: { chat_group_id: chat_group.id, message: message_params }
         expect(response).to redirect_to new_user_session_path
       end
     end
