@@ -13,7 +13,6 @@ $(function(){
         }
     $('#new_message').on('submit', function(e){
         e.preventDefault();
-        alert('hello');
         var formData = new FormData(this);
         var url = $(this).attr('action');
         $.ajax({
@@ -27,8 +26,11 @@ $(function(){
         .done(function(data){
             var html = buildHTML(data);
             console.log(html);
-            $('.main-content__chat-area').append(html)
+            $('.main-content__chat-area').append(html);
             // $('.textbox').val('')
+            $('.message-text').val('');
+            $('.message-img').val('');
+
         })
     })
 })
