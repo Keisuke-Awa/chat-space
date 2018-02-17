@@ -25,7 +25,7 @@
             = msg.body
           = image_tag msg.image, class:'main-content__chat-area__message__image'
   .main-content__send-box
-    = form_for [@chat_group, @message], remote: true do |f|
+    = form_for [@chat_group, @message] do |f|
       = f.text_area :body, placeholder: 'メッセージを入力してください', class: 'main-content__send-box__text-area message-text'
       .main-content__send-box__image
         = f.label :image, class:'main-content__send-box__image' do
