@@ -1,5 +1,5 @@
 $(function(){
-    $('#send_message').on('submit', function(e){
+    $('#new_message').on('submit', function(e){
         e.preventDefault();
         console.log('hello');
     })
