@@ -1,15 +1,20 @@
 $(function(){
     function buildHTML(message){
         var html = `<div class='main-content__chat-area__message'>
-                      <div class='main-content__chat-area__message__info clearfix'>
-                        <h3>${ message.user.name }</h3>
-                        <p>${ message.created_at }</p>
-                      </div>
-                      <div class='main-content__chat-area__message__text'>
-                        <p>${ message.body }</p>
-                      </div>
-                    </div>`
-            return html;
+                       <div class='main-content__chat-area__message__info clearfix'>
+                         <h3>${ message.user.name }</h3>
+                         <p>${ message.created_at }</p>
+                       </div>`;
+        if(message.body){
+            html += `<div class='main-content__chat-area__message__text'>
+                      <p>${ message.body }</p>
+                     </div>`;
+        }
+        if(message.image){
+            html += `<img class="main-content__chat-area__message__image" src="${ message.image.url }">`
+        }
+        html += `</div>`;
+        return html;
         }
     $('#new_message').on('submit', function(e){
         e.preventDefault();
@@ -27,7 +32,6 @@ $(function(){
             var html = buildHTML(data);
             console.log(html);
             $('.main-content__chat-area').append(html);
-            // $('.textbox').val('')
             $('.message-text').val('');
             $('.message-img').val('');
 
