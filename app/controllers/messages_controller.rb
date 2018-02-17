@@ -14,10 +14,13 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chat_group = @chat_group.object
     @message.user = current_user
-    if @message.save
-      redirect_to chat_group_messages_path(@chat_group), notice: 'メッセージが作成されました'
-    else
-      redirect_to chat_group_messages_path(@chat_group), alert: 'メッセージを入力してください'
+    respond_to do |format|
+      if @message.save
+        format.html { redirect_to chat_group_messages_path(@chat_group)  }
+        format.json
+      else
+        redirect_to chat_group_messages_path(@chat_group), alert: 'メッセージを入力してください'
+      end
     end
   end
 
