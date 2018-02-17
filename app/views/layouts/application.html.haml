@@ -6,7 +6,6 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    %script src: "http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
   %body
     - flash.each do |key, value|
       = content_tag(:div, value, class: "flash flash__#{key}")
