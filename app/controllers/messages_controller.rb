@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     messages = @chat_group.messages.includes(:user)
     @messages = MessageDecorator.decorate_collection(messages)
-    @message = Message.new
+    # @message = Message.new
     chat_groups = current_user.chat_groups.includes(:messages)
     @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
   end
@@ -14,13 +14,10 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chat_group = @chat_group.object
     @message.user = current_user
+    @message.save
     respond_to do |format|
-      if @message.save
-        format.html { redirect_to chat_group_messages_path(@chat_group)  }
-        format.json { render json: @message}
-      else
-        redirect_to chat_group_messages_path(@chat_group), alert: 'メッセージを入力してください'
-      end
+      format.html { redirect_to chat_group_messages_path(@chat_group)  }
+      format.json { render json: @message}
     end
   end
 
