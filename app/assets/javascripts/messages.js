@@ -10,7 +10,7 @@ $(function(){
                       <p>${ message.body }</p>
                      </div>`;
         }
-        if(message.image){
+        if(message.image.url){
             html += `<img class="main-content__chat-area__message__image" src="${ message.image.url }">`
         }
         html += `</div>`;
@@ -30,6 +30,7 @@ $(function(){
         })
         .done(function(data){
             var html = buildHTML(data);
+            console.log(data.image.url);
             console.log(html);
             $('.main-content__chat-area').append(html);
             $('.message-text').val('');
