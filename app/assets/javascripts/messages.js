@@ -33,6 +33,7 @@ $(function(){
             console.log(data.image.url);
             console.log(html);
             $('.main-content__chat-area').append(html);
+            $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
             $('.message-text').val('');
             $('.message-img').val('');
 
