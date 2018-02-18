@@ -36,8 +36,10 @@ $(function(){
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
             $('.message-text').val('');
             $('.message-img').val('');
-
         })
+        .fail(function() {
+            alert('メッセージを入力してください');
+        });
         return false;
     })
 })
