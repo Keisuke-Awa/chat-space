@@ -1,5 +1,5 @@
 $(function(){
-    function buildHTML(message){
+    function newMessageHTML(message){
         var html = `<div class='main-content__chat-area__message'>
                        <div class='main-content__chat-area__message__info clearfix'>
                          <h3>${ message.user.name }</h3>
@@ -22,16 +22,14 @@ $(function(){
         var url = $(this).attr('action');
         $.ajax({
             url: url,
-            type: "POST",
+            type: 'POST',
             data: formData,
             dataType: 'json',
             processData: false,
             contentType: false
         })
         .done(function(data){
-            var html = buildHTML(data);
-            console.log(data.image.url);
-            console.log(html);
+            var html = newMessageHTML(data);
             $('.main-content__chat-area').append(html);
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
             $('.message-text').val('');
