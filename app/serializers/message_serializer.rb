@@ -1,5 +1,5 @@
 class MessageSerializer < ActiveModel::Serializer
-  attributes :id, :body, :image, :user_id, :created_at
+  attributes  :body, :image, :created_at
   has_one :user
 
   def created_at
