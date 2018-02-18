@@ -38,5 +38,6 @@ $(function(){
             $('.message-img').val('');
 
         })
+        return false;
     })
 })
