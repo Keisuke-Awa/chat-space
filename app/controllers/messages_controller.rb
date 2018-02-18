@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     messages = @chat_group.messages.includes(:user)
     @messages = MessageDecorator.decorate_collection(messages)
-    # @message = Message.new
+    @message = Message.new
     chat_groups = current_user.chat_groups.includes(:messages)
     @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
   end
