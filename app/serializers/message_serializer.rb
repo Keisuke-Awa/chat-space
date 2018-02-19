@@ -10,7 +10,7 @@ class MessageSerializer < ActiveModel::Serializer
   end
 
   def user_name
-    object.user.name.to_s
+    object.user&.name.to_s
   end
 
 end
