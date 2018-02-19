@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.chat_group = @chat_group.object
+    @message.chat_group = @chat_group
     @message.user = current_user
     @message.save
     respond_to do |format|
