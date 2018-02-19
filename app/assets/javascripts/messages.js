@@ -2,16 +2,16 @@ $(function(){
     function newMessageHTML(message){
         var html = `<div class='main-content__chat-area__message'>
                        <div class='main-content__chat-area__message__info clearfix'>
-                         <h3>${ message.user.name }</h3>
-                         <p>${ message.created_at }</p>
+                         <h3>${ message.user_name }</h3>
+                         <p>${ message.created_at_time }</p>
                        </div>`;
         if(message.body){
             html += `<div class='main-content__chat-area__message__text'>
                       <p>${ message.body }</p>
                      </div>`;
         }
-        if(message.image.url){
-            html += `<img class="main-content__chat-area__message__image" src="${ message.image.url }">`
+        if(message.image_url){
+            html += `<img class="main-content__chat-area__message__image" src="${ message.image_url }">`
         }
         html += `</div>`;
         return html;
@@ -36,7 +36,7 @@ $(function(){
             $('.message-img').val('');
         })
         .fail(function() {
-            alert('メッセージを入力してください');
+            alert('メッセージの送信に失敗しました');
         });
         return false;
     })
