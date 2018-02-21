@@ -6,7 +6,7 @@ $(function(){
         this.body = body;
         this.imageUrl = imageUrl;
 
-        this.newMessageHTML = function() {
+        Message.prototype.newMessageHTML = function() {
             var html = '<div class=\'main-content__chat-area__message\'>';
             html += '<div class=\'main-content__chat-area__message__info clearfix\'>';
             html += '<h3>' + this.userName + '</h3>';
