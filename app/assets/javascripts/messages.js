@@ -26,8 +26,8 @@ $(function(){
 
     $('#new_message').on('submit', function(e){
         e.preventDefault();
-        var formData = new FormData(this);
-        var url = $(this).attr('action');
+        const formData = new FormData(this);
+        const url = $(this).attr('action');
         $.ajax({
             url: url,
             type: 'POST',
@@ -37,8 +37,8 @@ $(function(){
             contentType: false
         })
         .done(function(data){
-            var message = new Message(data.user_name, data.created_at_time, data.body, data.image_url);
-            var html = message.newMessageHTML();
+            const message = new Message(data.user_name, data.created_at_time, data.body, data.image_url);
+            const html = message.newMessageHTML();
             $('.main-content__chat-area').append(html);
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
             $('.message-text').val('');
