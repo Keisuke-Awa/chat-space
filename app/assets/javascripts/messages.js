@@ -1,21 +1,29 @@
 $(function(){
-    function newMessageHTML(message){
-        var html = `<div class='main-content__chat-area__message'>
-                       <div class='main-content__chat-area__message__info clearfix'>
-                         <h3>${ message.user_name }</h3>
-                         <p>${ message.created_at_time }</p>
-                       </div>`;
-        if(message.body){
-            html += `<div class='main-content__chat-area__message__text'>
-                      <p>${ message.body }</p>
-                     </div>`;
+    // Messageクラスの定義
+    var Message = function(userName, createdAtTime, body, imageUrl) {
+        this.userName = userName;
+        this.createdAtTime = createdAtTime;
+        this.body = body;
+        this.imageUrl = imageUrl;
+
+        this.newMessageHTML = function() {
+            var html = '<div class=\'main-content__chat-area__message\'>';
+            html += '<div class=\'main-content__chat-area__message__info clearfix\'>';
+            html += '<h3>' + this.userName + '</h3>';
+            html += '<p>' + this.createdAtTime + '</p>';
+            html += '</div>';
+            if(this.body) {
+                html += '<div class=\'main-content__chat-area__message__text\'>';
+                html += '<p>' + this.body + '</p>';
+                html += '</div>';
+            }
+            if(this.imageUrl){
+                html += '<img class="main-content__chat-area__message__image" src="' + this.imageUrl + '" >';
+            }
+            return html;
         }
-        if(message.image_url){
-            html += `<img class="main-content__chat-area__message__image" src="${ message.image_url }">`
-        }
-        html += `</div>`;
-        return html;
-        }
+    };
+
     $('#new_message').on('submit', function(e){
         e.preventDefault();
         var formData = new FormData(this);
@@ -29,7 +37,10 @@ $(function(){
             contentType: false
         })
         .done(function(data){
-            var html = newMessageHTML(data);
+            console.log(data);
+            var message = new Message(data.user_name, data.created_at_time, data.body, data.image_url);
+            console.log(message);
+            var html = message.newMessageHTML();
             $('.main-content__chat-area').append(html);
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
             $('.message-text').val('');
