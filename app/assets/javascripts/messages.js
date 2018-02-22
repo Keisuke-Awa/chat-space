@@ -7,7 +7,7 @@ $(function(){
         this.imageUrl = data.image_url;
     };
 
-    Message.prototype.newMessageHTML = function() {
+    Message.prototype.newHTML = function() {
         var html = '<div class=\'main-content__chat-area__message\'>';
         html += '<div class=\'main-content__chat-area__message__info clearfix\'>';
         html += '<h3>' + this.userName + '</h3>';
@@ -38,7 +38,7 @@ $(function(){
         })
         .done(function(data){
             const message = new Message(data);
-            const html = message.newMessageHTML();
+            const html = message.newHTML();
             $('.main-content__chat-area').append(html);
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
             $('#message-text').val('');
