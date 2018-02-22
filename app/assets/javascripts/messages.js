@@ -1,10 +1,10 @@
 $(function(){
     // Messageクラスの定義
     var Message = function(data) {
-        this.userName = data.userName;
-        this.createdAt = data.createdAt;
+        this.userName = data.user_name;
+        this.createdAt = data.created_at;
         this.body = data.body;
-        this.imageUrl = data.imageUrl;
+        this.imageUrl = data.image_url;
     };
 
     Message.prototype.newMessageHTML = function() {
