@@ -1,28 +1,28 @@
 $(function(){
     // Messageクラスの定義
-    var Message = function(userName, createdAt, body, imageUrl) {
-        this.userName = userName;
-        this.createdAt = createdAt;
-        this.body = body;
-        this.imageUrl = imageUrl;
-
-        Message.prototype.newMessageHTML = function() {
-            var html = '<div class=\'main-content__chat-area__message\'>';
-            html += '<div class=\'main-content__chat-area__message__info clearfix\'>';
-            html += '<h3>' + this.userName + '</h3>';
-            html += '<p>' + this.createdAt + '</p>';
-            html += '</div>';
-            if(this.body) {
-                html += '<div class=\'main-content__chat-area__message__text\'>';
-                html += '<p>' + this.body + '</p>';
-                html += '</div>';
-            }
-            if(this.imageUrl){
-                html += '<img class="main-content__chat-area__message__image" src="' + this.imageUrl + '" >';
-            }
-            return html;
-        }
+    var Message = function(data) {
+        this.userName = data.userName;
+        this.createdAt = data.createdAt;
+        this.body = data.body;
+        this.imageUrl = data.imageUrl;
     };
+
+    Message.prototype.newMessageHTML = function() {
+        var html = '<div class=\'main-content__chat-area__message\'>';
+        html += '<div class=\'main-content__chat-area__message__info clearfix\'>';
+        html += '<h3>' + this.userName + '</h3>';
+        html += '<p>' + this.createdAt + '</p>';
+        html += '</div>';
+        if(this.body) {
+            html += '<div class=\'main-content__chat-area__message__text\'>';
+            html += '<p>' + this.body + '</p>';
+            html += '</div>';
+        }
+        if(this.imageUrl){
+            html += '<img class="main-content__chat-area__message__image" src="' + this.imageUrl + '" >';
+        }
+        return html;
+    }
 
     $('#new_message').on('submit', function(e){
         e.preventDefault();
