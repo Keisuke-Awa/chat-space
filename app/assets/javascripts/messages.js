@@ -37,6 +37,7 @@ $(function(){
             contentType: false
         })
         .done(function(data){
+            console.log(data);
             const message = new Message(data);
             const html = message.newHTML();
             $('.main-content__chat-area').append(html);
@@ -44,8 +45,9 @@ $(function(){
             $('#message-text').val('');
             $('#message-img').val('');
         })
-        .fail(function() {
-            alert('メッセージの送信に失敗しました');
+        .fail(function(errors) {
+            console.log(errors);
+            alert(errors.responseJSON['errors']);
         });
         return false;
     })
