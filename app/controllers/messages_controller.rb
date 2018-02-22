@@ -14,10 +14,14 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chat_group = @chat_group
     @message.user = current_user
-    @message.save
-    respond_to do |format|
-      format.html { redirect_to chat_group_messages_path(@chat_group)  }
-      format.json { render json: @message}
+    begin
+      @message.save!
+      respond_to do |format|
+        format.html { redirect_to chat_group_messages_path(@chat_group)  }
+        format.json { render json: @message}
+      end
+    rescue => error
+      render json: { errors: error }, status: 400
     end
   end
 
