@@ -41,8 +41,8 @@ $(function(){
             const html = message.newMessageHTML();
             $('.main-content__chat-area').append(html);
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
-            $('.message-text').val('');
-            $('.message-img').val('');
+            $('#message-text').val('');
+            $('#message-img').val('');
         })
         .fail(function() {
             alert('メッセージの送信に失敗しました');
