@@ -22,7 +22,7 @@ $(function(){
             html += '<img class="main-content__chat-area__message__image" src="' + this.imageUrl + '" >';
         }
         return html;
-    }
+    };
 
     $('#new_message').on('submit', function(e){
         e.preventDefault();
@@ -37,18 +37,12 @@ $(function(){
             contentType: false
         })
         .done(function(data){
-            if(data) {
-                console.log('ok');
-                const message = new Message(data);
-                const html = message.newMessageHTML();
-                $('.main-content__chat-area').append(html);
-                $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
-                $('.message-text').val('');
-                $('.message-img').val('');
-            }
-            else {
-                return;
-            }
+            const message = new Message(data);
+            const html = message.newMessageHTML();
+            $('.main-content__chat-area').append(html);
+            $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
+            $('.message-text').val('');
+            $('.message-img').val('');
         })
         .fail(function() {
             alert('メッセージの送信に失敗しました');
