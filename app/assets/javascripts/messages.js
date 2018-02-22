@@ -38,7 +38,8 @@ $(function(){
         })
         .done(function(data){
             if(data) {
-                const message = new Message(data.user_name, data.created_at, data.body, data.image_url);
+                console.log('ok');
+                const message = new Message(data);
                 const html = message.newMessageHTML();
                 $('.main-content__chat-area').append(html);
                 $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
