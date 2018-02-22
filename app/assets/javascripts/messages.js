@@ -37,12 +37,17 @@ $(function(){
             contentType: false
         })
         .done(function(data){
-            const message = new Message(data.user_name, data.created_at, data.body, data.image_url);
-            const html = message.newMessageHTML();
-            $('.main-content__chat-area').append(html);
-            $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
-            $('.message-text').val('');
-            $('.message-img').val('');
+            if(data) {
+                const message = new Message(data.user_name, data.created_at, data.body, data.image_url);
+                const html = message.newMessageHTML();
+                $('.main-content__chat-area').append(html);
+                $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
+                $('.message-text').val('');
+                $('.message-img').val('');
+            }
+            else {
+                return;
+            }
         })
         .fail(function() {
             alert('メッセージの送信に失敗しました');
