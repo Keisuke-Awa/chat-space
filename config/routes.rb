@@ -12,6 +12,7 @@
 #                          DELETE /users(.:format)                               devise/registrations#destroy
 #                          POST   /users(.:format)                               devise/registrations#create
 #                     root GET    /                                              chat_groups#index
+#                    users GET    /users(.:format)                               users#index
 #                edit_user GET    /users/:id/edit(.:format)                      users#edit
 #                     user PATCH  /users/:id(.:format)                           users#update
 #                          PUT    /users/:id(.:format)                           users#update
@@ -22,7 +23,7 @@
 #          edit_chat_group GET    /chat_groups/:id/edit(.:format)                chat_groups#edit
 #               chat_group PATCH  /chat_groups/:id(.:format)                     chat_groups#update
 #                          PUT    /chat_groups/:id(.:format)                     chat_groups#update
-#
+# 
 
 Rails.application.routes.draw do
   devise_for :users, only: [:session, :registrations]
