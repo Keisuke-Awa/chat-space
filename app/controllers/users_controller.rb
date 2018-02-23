@@ -26,4 +26,8 @@ class UsersController < ApplicationController
   def update_params
     params.require(:user).permit(:name, :email)
   end
+
+  def search_params
+
+  end
 end
