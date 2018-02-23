@@ -7,14 +7,14 @@
         %li
           = msg
 
-.chat-group-form__field.clearfix
-  .chat-group-form__field--left
-    = f.label :name, 'グループ名', class: 'chat-group-form__label'
-  .chat-group-form__field--right
-    = f.text_field :name, placeholder: 'グループ名を入力してください', id: 'chat_group_name', class: 'chat-group-form__input'
+-#.chat-group-form__field.clearfix
+-#  .chat-group-form__field--left
+-#    = f.label :name, 'グループ名', class: 'chat-group-form__label'
+-#  .chat-group-form__field--right
+-#    = f.text_field :name, placeholder: 'グループ名を入力してください', id: 'chat_group_name', class: 'chat-group-form__input'
 .chat-group-form__field.clearfix
   / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
-  /   <div class='chat-group-form__field--left'>
+  .chat-group-form__field--left
   /   <label class="chat-group-form__label" for="chat_group_チャットメンバーを追加">チャットメンバーを追加</label>
   /   </div>
   /   <div class='chat-group-form__field--right'>
