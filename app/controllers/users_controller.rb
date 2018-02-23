@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def index
-    @users = User.where('name like ?', "%#{params[:name]}%").limit(10)
+    @q = User.search(params[:q])
+    @users = @q.result(distinct: true)
     respond_to do |format|
       format.html
       format.json
