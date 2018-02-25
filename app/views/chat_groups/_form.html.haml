@@ -30,12 +30,14 @@
       %input{class: 'chat-group-form__input', id: 'user-search-field', placeholder: '追加したいユーザー名を入力してください', type: 'text'}
     #user-search-result
 
-.chat-group-form__field.clearfix
-  .chat-group-form__field--left
+
     #chat-group-users
       .chat-group-user.clearfix#chat-group-user-22
+        %p{class: 'chat-group-user__name'}
+          seo_kyohei
+
   .chat-group-form__field--right
-    =f.submit 'Save', class: 'chat-group-form__action-btn'
+    =f.submit '作成する', class: 'chat-group-form__action-btn'
 
 -#    = f.label :user_ids, 'チャットメンバー', class: 'chat-group-form__label'
 -#  .chat-group-form__field--right
@@ -45,6 +47,8 @@
 -#      / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
 
 -#        <input name='chat_group[user_ids][]' type='hidden' value='22'>
--#        <p class='chat-group-user__name'>seo_kyohei</p>
 -#        </div>
 -#        </div>
+
+-#.chat-group-form__field.clearfix
+-#  .chat-group-form__field--left
