@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit, :update]
-  before_action :set_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: %i(:index, :edit, :update)
+  before_action :set_user, only: %i(:edit, :update)
 
   def index
     begin
