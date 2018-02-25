@@ -13,7 +13,7 @@ $(function(){
         return html;
     };
 
-    User.prototype.addMemberHTML = function() {
+    User.prototype.groupMemberHTML = function() {
         var html = '<div class="chat-group-user">';
         html += '<p class="chat-group-user__name">' + this.name + '</p>';
         html += '<button class="chat-group-user__delete-user-btn" type="button">削除</button>';
@@ -52,7 +52,7 @@ $(function(){
         const userName = $(this).data('name');
         const userData = {id: userId, name: userName};
         const user = new User(userData);
-        const html = user.addMemberHTML();
+        const html = user.groupMemberHTML();
         $(this).parent().remove();
         $('#chat-group-users').append(html);
     });
