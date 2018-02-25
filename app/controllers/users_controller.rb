@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index
     begin
       @users = User.search(name_cont: search_params[:query]).result(distinct: true)
-      render json: @users#, each_serializer: UserSerializer
+      render json: @users
     rescue => error
       render json: { errors: error }, status: 400
     end
