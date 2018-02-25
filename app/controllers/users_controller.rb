@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i(:index, :edit, :update)
-  before_action :set_user, only: %i(:edit, :update)
+  before_action :authenticate_user!, only: %i(index edit update)
+  before_action :set_user, only: %i(edit update)
 
   def index
     begin
       @users = User.search(name_cont: search_params[:query]).result(distinct: true)
-      render json: @users, each_serializer: UserSerializer
+      render json: @users#, each_serializer: UserSerializer
     rescue => error
       render json: { errors: error }, status: 400
     end
