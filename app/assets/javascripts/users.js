@@ -6,9 +6,10 @@ $(function(){
     };
 
     User.prototype.searchFieldHTML = function() {
+        console.log(this);
         var html = '<div class="chat-group-user">';
         html += '<p class="chat-group-user__name">' + this.name + '</p>';
-        html += '<button class="chat-group-user__add-user-btn" type="button" data-obj="' + this + '">追加</button>';
+        html += "<button class='chat-group-user__add-user-btn' type='button' data-obj='" + this +  "'>追加</button>";
         html += '</div>';
         return html;
     };
@@ -51,5 +52,8 @@ $(function(){
     });
 
     $(document).on("click", ".chat-group-user__add-user-btn", function(){
+        const userData = $(this).data('obj');
+        const user = new User(userData);
+        console.log(user.name);
     });
 })
