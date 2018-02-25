@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def index
-    @q = User.search(params[:q])
-    @users = @q.result(distinct: true)
+    @users = User.search(name_cont: params[:name]).result(distinct: true)
     respond_to do |format|
       format.html
       format.json
