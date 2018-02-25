@@ -50,8 +50,7 @@ $(function(){
     $(document).on("click", ".chat-group-user__add-user-btn", function(){
         const userId = $(this).data('id');
         const userName = $(this).data('name');
-        const userData = {id: userId, name: userName};
-        const user = new User(userData);
+        const user = new User({id: userId, name: userName});
         const html = user.groupMemberHTML();
         $(this).parent().remove();
         $('#chat-group-users').append(html);
