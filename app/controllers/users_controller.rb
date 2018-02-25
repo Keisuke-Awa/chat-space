@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def index
     @users = User.search(name_cont: search_params[:query]).result(distinct: true)
     respond_to do |format|
-      format.html
       format.json { render json: @users, each_serializer: UserSerializer }
     end
   end
