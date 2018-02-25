@@ -8,7 +8,7 @@ $(function(){
     User.prototype.searchFieldHTML = function() {
         var html = '<div class="chat-group-user">';
         html += '<p class="chat-group-user__name">' + this.name + '</p>';
-        html += "<button class='chat-group-user__add-user-btn' type='button' data-id='" + this.id + "' data-name='" + this.name + "'>追加</button>";
+        html += '<button class="chat-group-user__add-user-btn" type="button" data-id="' + this.id + '" data-name="' + this.name + '">追加</button>';
         html += '</div>';
         return html;
     };
