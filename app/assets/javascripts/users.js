@@ -36,6 +36,10 @@ $(function(){
             dataType: 'json'
         })
         .done(function(users) {
+            if(users.length === 0) {
+                return ;
+            };
+            console.log(users);
             users.forEach( function( user ) {
                 var user = new User(user);
                 const html =  user.userListComponent();
