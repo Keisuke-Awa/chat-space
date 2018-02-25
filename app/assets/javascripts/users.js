@@ -37,8 +37,8 @@ $(function(){
         })
         .done(function(users) {
             users.forEach( function( user ) {
-                const chatGroupUser = new User(user);
-                const html = chatGroupUser.userListComponent();
+                var user = new User(user);
+                const html =  user.userListComponent();
                 $('#user-search-result').append(html);
             });
         })
