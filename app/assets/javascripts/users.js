@@ -28,8 +28,8 @@ $(function(){
             })
             .done(function(users) {
                 users.forEach( function( user ) {
-                    var user = new User(user);
-                    const html = user.searchFieldHTML()
+                    const chatGroupUser = new User(user);
+                    const html = chatGroupUser.searchFieldHTML()
                     $('#user-search-result').append(html);
                 });
             })
