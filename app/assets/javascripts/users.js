@@ -33,9 +33,9 @@ $(function(){
                     $('#user-search-result').append(html);
                 });
             })
-            .fail(function(){
-                console.log('failed');
-            })
+            .fail(function(errors) {
+                alert(errors.responseJSON['errors']);
+            });
         });
     });
 })
