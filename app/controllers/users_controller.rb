@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def index
-    @users = User.search(name_cont: params[:name]).result(distinct: true)
+    @users = User.search(name_cont: search_params).result(distinct: true)
     respond_to do |format|
       format.html
       format.json
@@ -27,6 +27,6 @@ class UsersController < ApplicationController
   end
 
   def search_params
-
+    params.permit(:query)
   end
 end
