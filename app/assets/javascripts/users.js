@@ -1,14 +1,15 @@
 $(function(){
     // Userクラスの定義
     var User = function(data) {
-        this.id = data.id
+        this.id = data.id;
         this.name = data.name;
     };
 
     User.prototype.searchFieldHTML = function() {
-        var html = '<div class="chat-group-user">'
-        html += '<p class="chat-group-user__name">' + this.name + '</p>'
-        html += '</div>'
+        var html = '<div class="chat-group-user">';
+        html += '<p class="chat-group-user__name">' + this.name + '</p>';
+        html += '<button class="chat-group-user__add-user-btn" type="button">追加</button>';
+        html += '</div>';
         return html;
     };
 
@@ -26,7 +27,6 @@ $(function(){
                 dataType: 'json'
             })
             .done(function(users) {
-
                 users.forEach( function( user ) {
                     var user = new User(user);
                     const html = user.searchFieldHTML()
