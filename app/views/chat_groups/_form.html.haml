@@ -15,22 +15,17 @@
 .chat-group-form__field.clearfix
   / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
   .chat-group-form__field--left
-    -#= search_form_for( @q, url: users_path, method: :get )  do |f|
-    -#  = f.label :name_cont, "チャットメンバーを追加", class: 'chat-group-form__label'
-    -#.chat-group-form__field--right
-    -#  .chat-group-form__search.clearfix
-    -#    =# f.text_field :name_cont, class: 'chat-group-form__input', id: 'user-search-field', placeholder: '追加したいユーザー名を入力してください'
-    -#  #user-search-result
-
     %label.chat-group-form__label
     チャットメンバーを追加
-  /   </div>
   .chat-group-form__field--right
     .chat-group-form__search.clearfix
       %input{class: 'chat-group-form__input', id: 'user-search-field', placeholder: '追加したいユーザー名を入力してください', type: 'text'}
     #user-search-result
 
+  .chat-group-form__field--left
+    = f.label :user_ids, 'チャットメンバー', class: 'chat-group-form__label'
 
+  .chat-group-form__field--right
     #chat-group-users
       .chat-group-user.clearfix#chat-group-user-22
         %p{class: 'chat-group-user__name'}
@@ -39,7 +34,6 @@
   .chat-group-form__field--right
     =f.submit '作成する', class: 'chat-group-form__action-btn'
 
--#    = f.label :user_ids, 'チャットメンバー', class: 'chat-group-form__label'
 -#  .chat-group-form__field--right
 -#    = f.collection_check_boxes :user_ids, User.all, :id, :name do |b|
 -#      = b.label { b.check_box + b.text }
