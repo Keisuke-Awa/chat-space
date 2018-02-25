@@ -23,7 +23,7 @@ $(function(){
     };
 
 
-    $('#user-search-field').on('keyup', function() {
+    $(document).on('keyup', '#user-search-field', function() {
         $('#user-search-result').empty();
         const input = $(this).val();
         if (!input) {
