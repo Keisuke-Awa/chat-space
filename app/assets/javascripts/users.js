@@ -5,7 +5,7 @@ $(function(){
         this.name = data.name;
     };
 
-    User.prototype.searchFieldHTML = function() {
+    User.prototype.userListComponent = function() {
         var html = '<div class="chat-group-user">';
         html += '<p class="chat-group-user__name">' + this.name + '</p>';
         html += '<button class="chat-group-user__add-user-btn" type="button" data-id="' + this.id + '" data-name="' + this.name + '">追加</button>';
@@ -38,7 +38,7 @@ $(function(){
         .done(function(users) {
             users.forEach( function( user ) {
                 const chatGroupUser = new User(user);
-                const html = chatGroupUser.searchFieldHTML();
+                const html = chatGroupUser.userListComponent();
                 $('#user-search-result').append(html);
             });
         })
