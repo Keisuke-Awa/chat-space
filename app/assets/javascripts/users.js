@@ -22,9 +22,6 @@ $(function(){
         return html;
     };
 
-    User.prototype.deleteMemberHTML = function() {
-
-    };
 
     $('#user-search-field').on('keyup', function() {
         $('#user-search-result').empty();
@@ -58,5 +55,9 @@ $(function(){
         const html = user.addMemberHTML();
         $(this).parent().remove();
         $('#chat-group-users').append(html);
+    });
+
+    $(document).on("click", ".chat-group-user__delete-user-btn", function(){
+        $(this).parent().remove();
     });
 })
