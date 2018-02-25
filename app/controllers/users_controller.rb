@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def index
-    @users = User.search(name_cont: search_params).result(distinct: true)
-    # @users = User.where('title LIKE(?)', "%#{search_params}%")
+    @users = User.search(name_cont: search_params[:query]).result(distinct: true)
     respond_to do |format|
       format.html
       format.json { render json: @users, each_serializer: UserSerializer }
