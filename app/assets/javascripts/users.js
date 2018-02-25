@@ -5,13 +5,17 @@ $(function(){
         this.name = data.name;
     };
 
-    User.prototype.newHTML = function() {
-
+    User.prototype.searchFieldHTML = function() {
+        var html = '<div class="chat-group-user">'
+        html += '<p class="chat-group-user__name">' + this.name + '</p>'
+        html += '</div>'
+        return html;
     };
 
     $(function() {
         $('#user-search-field').on('keyup', function() {
-            var input = $(this).val();
+            $('#user-search-result').empty();
+            const input = $(this).val();
             $.ajax({
                 type: 'GET',
                 url: '/users',
@@ -19,7 +23,12 @@ $(function(){
                 dataType: 'json'
             })
             .done(function(users) {
-                console.log(users);
+
+                users.forEach( function( user ) {
+                    var user = new User(user);
+                    const html = user.searchFieldHTML()
+                    $('#user-search-result').append(html);
+                });
             })
             .fail(function(){
                 console.log('failed');
