@@ -40,35 +40,35 @@
     }
   }
 
-  .chat-group-form__field {
-    margin-top: 30px;
-    &:after {
-      content: "";
-      clear: both;
-      display: block;
+  .chat-group-form {
+    &__field {
+      margin-top: 30px;
+      &--left {
+        float: left;
+        width: 30%;
+        padding-right: 20px;
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+      &--right {
+        float: right;
+        width: 70%;
+      }
+      &__group-name, &__search-field, &__member {
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+      &__submit {
+        margin: 0 auto;
+      }
     }
-
-    .chat-group-form__field--left {
-      float: left;
-      width: 30%;
-      padding-right: 20px;
-      padding-left: 20px;
-      box-sizing: border-box;
-    }
-
-    .chat-group-form__field--right {
-      float: right;
-      width: 70%;
-    }
-
-    .chat-group-form__label {
+    &__label {
       display: block;
       line-height: 50px;
       font-weight: bold;
       text-align: right;
     }
-
-    .chat-group-form__input {
+    &__input {
       float: left;
       width: 100%;
       line-height: 30px;
@@ -93,7 +93,7 @@
     }
 
     .chat-group-user__btn {
-      float: right;
+      //float: right;
       display: inline-block;
       cursor: pointer;
 
