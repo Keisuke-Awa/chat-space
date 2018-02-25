@@ -16,6 +16,9 @@ $(function(){
         $('#user-search-field').on('keyup', function() {
             $('#user-search-result').empty();
             const input = $(this).val();
+            if (!input) {
+                return;
+            }
             $.ajax({
                 type: 'GET',
                 url: '/users',
