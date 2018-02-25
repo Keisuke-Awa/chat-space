@@ -26,12 +26,12 @@
 # 
 
 Rails.application.routes.draw do
-  devise_for :users, only: [:session, :registrations]
+  devise_for :users, only: %i(session registrations)
 
   root "chat_groups#index"
 
-  resources :users, only: [:index, :edit, :update]
-  resources :chat_groups, only: [:new, :create, :edit, :update] do
-    resources :messages, only: [:index, :create]
+  resources :users, only: %i(index edit update)
+  resources :chat_groups, only: %i(new create edit update) do
+    resources :messages, only: %i(index create)
   end
 end
