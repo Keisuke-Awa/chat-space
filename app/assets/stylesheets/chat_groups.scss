@@ -78,9 +78,9 @@
   }
 
   .chat-group-user {
-    padding-left: 30px;
+    padding-left: 20px;
     line-height: 50px;
-    font-size: 14px;
+    font-size: 1em;
     border-bottom: 1px solid $gray;
     &:after {
       content: "";
@@ -90,6 +90,17 @@
 
     &__add-user-btn {
       background-color: $sky-blue;
+      border: none;
+      color: white;
+      float: right;
+      line-height: 50px;
+      width: 100px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    &__delete-user-btn {
+      background-color: $danger-red;
       border: none;
       color: white;
       float: right;
