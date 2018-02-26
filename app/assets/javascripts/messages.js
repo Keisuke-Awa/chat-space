@@ -48,5 +48,11 @@ $(function(){
             alert(errors.responseJSON['errors']);
         });
         return false;
-    })
+    });
+
+    $(function(){
+        setInterval(function(){
+        },5000);
+    });
+
 })
