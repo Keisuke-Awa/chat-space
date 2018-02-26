@@ -24,6 +24,16 @@ $(function(){
         return html;
     };
 
+    function judgeValidURL(targetURL) {
+        var regex = new RegExp(/.+\/chat_groups\/\d+\/messages/;
+        if (regex.test(targetURL)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+
     $('#new_message').on('submit', function(e){
         e.preventDefault();
         const formData = new FormData(this);
@@ -50,9 +60,14 @@ $(function(){
         return false;
     });
 
-    $(function(){
-        setInterval(function(){
-        },5000);
-    });
+    if(){
+        $(function(){
+            setInterval(function(){
+
+            },5000);
+        });
+    }
+
+
 
 })
