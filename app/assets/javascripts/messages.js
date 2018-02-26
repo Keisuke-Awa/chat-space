@@ -25,7 +25,7 @@ $(function(){
     };
 
     function judgeValidURL(targetURL) {
-        var regex = new RegExp(/.+\/chat_groups\/\d+\/messages/;
+        var regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
         if (regex.test(targetURL)) {
             return true;
         }
