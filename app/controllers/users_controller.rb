@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
-  before_action :set_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: %i(index edit update)
+  before_action :set_user, only: %i(edit update)
+
+  def index
+    begin
+      @users = User.search(name_cont: search_params[:query]).result(distinct: true)
+      render json: @users
+    rescue => error
+      render json: { errors: error }, status: 400
+    end
+  end
 
   def edit; end
 
@@ -16,5 +25,9 @@ class UsersController < ApplicationController
 
   def update_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def search_params
+    params.permit(:query)
   end
 end

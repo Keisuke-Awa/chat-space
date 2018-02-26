@@ -40,35 +40,35 @@
     }
   }
 
-  .chat-group-form__field {
-    margin-top: 30px;
-    &:after {
-      content: "";
-      clear: both;
-      display: block;
+  .chat-group-form {
+    &__field {
+      margin-top: 30px;
+      &--left {
+        float: left;
+        width: 30%;
+        padding-right: 20px;
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+      &--right {
+        float: right;
+        width: 70%;
+      }
+      &__group-name, &__search-field, &__member {
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+      &__submit {
+        text-align: right;
+      }
     }
-
-    .chat-group-form__field--left {
-      float: left;
-      width: 30%;
-      padding-right: 20px;
-      padding-left: 20px;
-      box-sizing: border-box;
-    }
-
-    .chat-group-form__field--right {
-      float: right;
-      width: 70%;
-    }
-
-    .chat-group-form__label {
+    &__label {
       display: block;
       line-height: 50px;
       font-weight: bold;
       text-align: right;
     }
-
-    .chat-group-form__input {
+    &__input {
       float: left;
       width: 100%;
       line-height: 30px;
@@ -78,9 +78,9 @@
   }
 
   .chat-group-user {
-    padding: 0 15px;
+    padding-left: 20px;
     line-height: 50px;
-    font-size: 14px;
+    font-size: 1em;
     border-bottom: 1px solid $gray;
     &:after {
       content: "";
@@ -88,12 +88,33 @@
       display: block;
     }
 
+    &__add-user-btn {
+      background-color: $sky-blue;
+      border: none;
+      color: white;
+      float: right;
+      line-height: 50px;
+      width: 100px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    &__delete-user-btn {
+      background-color: $danger-red;
+      border: none;
+      color: white;
+      float: right;
+      line-height: 50px;
+      width: 100px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
     .chat-group-user__name {
       float: left;
     }
 
     .chat-group-user__btn {
-      float: right;
       display: inline-block;
       cursor: pointer;
 
@@ -114,4 +135,10 @@
     background-color: $sky-blue;
     border: 0;
   }
+}
+
+#user-search-result {
+  border: 2px solid $gray;
+  border-top: none;
+  margin-bottom: 20px;
 }

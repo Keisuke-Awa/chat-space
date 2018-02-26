@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
-  before_action :set_chat_group, only: [:index, :create]
+  before_action :authenticate_user!, only: %i(index create)
+  before_action :set_chat_group, only: %i(index create)
 
   def index
     messages = @chat_group.messages.includes(:user)
