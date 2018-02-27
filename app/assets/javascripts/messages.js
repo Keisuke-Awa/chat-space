@@ -60,18 +60,21 @@ $(function(){
 
     if( judgeValidURL(currentURL)){
         setInterval(function(){
+            const lastMessageId = $('.main-content__chat-area__message:last').data('id');
             $.ajax({
                 url: currentURL,
                 type: 'GET',
+                data: { last_message_id: lastMessageId },
                 dataType: 'json'
             })
             .done(function(messages){
-                var html = '';
-                messages.forEach( function( message ) {
-                    var message = new Message(message);
-                    html +=  message.messageComponent();
-                });
-                $('#chat-area').html(html);
+                // if()
+                // var html = '';
+                // messages.forEach( function( message ) {
+                //     var message = new Message(message);
+                //     html +=  message.messageComponent();
+                // });
+                // $('#chat-area').html(html);
             })
             .fail(function(){
                 alert('自動更新に失敗しました');
