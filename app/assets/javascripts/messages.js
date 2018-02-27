@@ -33,6 +33,10 @@ $(function(){
         }
     };
 
+    function autoMessageScroll() {
+        $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
+    }
+
     $('#new_message').on('submit', function(e){
         e.preventDefault();
         const formData = new FormData(this);
@@ -49,7 +53,7 @@ $(function(){
             const message = new Message(data);
             const html = message.messageComponent();
             $('#chat-area').append(html);
-            $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
+            autoMessageScroll();
             $('#message-text').val('');
             $('#message-img').val('');
         })
@@ -78,6 +82,7 @@ $(function(){
                     html +=  message.messageComponent();
                 });
                 $('#chat-area').append(html);
+                autoMessageScroll();
             })
             .fail(function(){
                 alert('自動更新に失敗しました');
