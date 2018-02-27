@@ -65,7 +65,10 @@ $(function(){
 
     if( judgeValidURL(currentURL)){
         setInterval(function(){
-            const lastMessageId = $('.main-content__chat-area__message:last').data('id');
+            var lastMessageId = $('.main-content__chat-area__message:last').data('id');
+            if(lastMessageId === void 0){
+                lastMessageId = 0
+            }
             $.ajax({
                 url: currentURL,
                 type: 'GET',
