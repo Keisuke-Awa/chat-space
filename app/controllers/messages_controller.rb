@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
     respond_to do |format|
       format.html
-      format.json { render json: Message.search(id_gt: search_params[:last_message_id].to_i).result(distinct: true) }
+      format.json { render json: messages.search(id_gt: ajax_params[:last_message_id].to_i).result(distinct: true) }
     end
   end
 
@@ -38,8 +38,8 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:body, :image)
   end
 
-  def search_params
-    params.permit(:last_message_id)
+  def ajax_params
+    params.permit(:last_message_id, :chat_group_id)
   end
 end
 
