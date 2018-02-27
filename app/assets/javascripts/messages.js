@@ -24,10 +24,11 @@ $(function(){
         return html;
     };
 
+    var currentURL = window.location.href;
+
     function judgeValidURL(targetURL) {
         const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
         if (regex.test(targetURL)) {
-            console.log(targetURL);
             return true;
         }
         else {
@@ -61,14 +62,25 @@ $(function(){
         return false;
     });
 
-    var currentURL = window.location.href;
-
     if( judgeValidURL(currentURL)){
-        $(function(){
-            setInterval(function(){
-                console.log('ok');
-            },5000);
-        });
+        setInterval(function(){
+            $.ajax({
+                url: currentURL,
+                type: 'GET',
+                dataType: 'json'
+            })
+            .done(function(messages){
+                var html = '';
+                messages.forEach( function( message ) {
+                    var message = new Message(message);
+                    html +=  message.newHTML();
+                });
+                $('#chat-area').html(html);
+            })
+            .fail(function(){
+                alert(errors.responseJSON['errors']);
+            });
+        },5 * 1000);
     }
 
 
