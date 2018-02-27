@@ -68,7 +68,9 @@ $(function(){
                 dataType: 'json'
             })
             .done(function(messages){
-                // if()
+                if(messages.length === 0) {
+                    return ;
+                };
                 // var html = '';
                 // messages.forEach( function( message ) {
                 //     var message = new Message(message);
