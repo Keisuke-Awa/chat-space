@@ -72,12 +72,12 @@ $(function(){
                 if(messages.length === 0) {
                     return ;
                 };
-                // var html = '';
-                // messages.forEach( function( message ) {
-                //     var message = new Message(message);
-                //     html +=  message.messageComponent();
-                // });
-                // $('#chat-area').html(html);
+                var html = '';
+                messages.forEach( function( message ) {
+                    var message = new Message(message);
+                    html +=  message.messageComponent();
+                });
+                $('#chat-area').append(html);
             })
             .fail(function(){
                 alert('自動更新に失敗しました');
