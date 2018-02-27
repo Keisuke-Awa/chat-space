@@ -1,6 +1,7 @@
 $(function(){
     // Messageクラスの定義
     var Message = function(data) {
+        this.id = data.id;
         this.userName = data.user_name;
         this.createdAt = data.created_at;
         this.body = data.body;
