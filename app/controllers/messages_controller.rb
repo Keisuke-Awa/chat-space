@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
   end
 
   def search_params
-
+    params.permit(:last_message_id)
   end
 end
 
