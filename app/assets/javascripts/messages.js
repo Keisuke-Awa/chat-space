@@ -1,4 +1,5 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
+        Turbolinks.clearCache();
         // Messageクラスの定義
         var Message = function(data) {
             this.id = data.id;
