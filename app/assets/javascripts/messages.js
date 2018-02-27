@@ -47,7 +47,7 @@ $(function(){
         .done(function(data){
             const message = new Message(data);
             const html = message.messageComponent();
-            $('.main-content__chat-area').append(html);
+            $('#chat-area').append(html);
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
             $('#message-text').val('');
             $('#message-img').val('');
