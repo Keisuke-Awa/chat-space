@@ -39,7 +39,7 @@ class MessagesController < ApplicationController
   end
 
   def ajax_params
-    params.permit(:last_message_id, :chat_group_id)
+    params.permit(:last_message_id)
   end
 end
 
