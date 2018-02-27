@@ -13,14 +13,10 @@ $(function(){
         html += '<h3>' + this.userName + '</h3>';
         html += '<p>' + this.createdAt + '</p>';
         html += '</div>';
-        if(this.body) {
-            html += '<div class=\'main-content__chat-area__message__text\'>';
-            html += '<p>' + this.body + '</p>';
-            html += '</div>';
-        }
-        if(this.imageUrl){
-            html += '<img class="main-content__chat-area__message__image" src="' + this.imageUrl + '" >';
-        }
+        html += '<div class=\'main-content__chat-area__message__text\'>';
+        html += '<p>' + this.body + '</p>';
+        html += '<img class="main-content__chat-area__message__image" src="' + this.imageUrl + '" >';
+        html += '</div></div>';
         return html;
     };
 
