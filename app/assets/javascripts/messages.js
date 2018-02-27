@@ -27,6 +27,7 @@ $(function(){
     function judgeValidURL(targetURL) {
         const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
         if (regex.test(targetURL)) {
+            console.log(targetURL);
             return true;
         }
         else {
@@ -60,12 +61,12 @@ $(function(){
         return false;
     });
 
-    var
+    var currentURL = window.location.href;
 
-    if(){
+    if( judgeValidURL(currentURL)){
         $(function(){
             setInterval(function(){
-
+                console.log('ok');
             },5000);
         });
     }
