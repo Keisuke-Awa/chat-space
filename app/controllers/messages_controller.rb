@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
     respond_to do |format|
       format.html
-      format.json { render json: @messages}
+      format.json { render json: messages, each_serializer: MessageSerializer }
     end
   end
 
