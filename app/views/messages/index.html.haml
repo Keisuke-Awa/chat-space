@@ -14,7 +14,7 @@
       %p Edit
   .main-content__chat-area#chat-area
     - @messages.each do |msg|
-      .main-content__chat-area__message{ "data-id": msg.id }
+      .main-content__chat-area__message{ 'data-id': msg.id }
         .main-content__chat-area__message__info.clearfix
           %h3
             = msg.user_name

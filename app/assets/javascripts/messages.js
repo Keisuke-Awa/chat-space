@@ -10,7 +10,7 @@ $(function(){
 
     Message.prototype.messageComponent = function() {
         var html = '<div class=\'main-content__chat-area__message\'>';
-        html += '<div class=\'main-content__chat-area__message__info clearfix\'>';
+        html += '<div class="main-content__chat-area__message__info clearfix" data-id="' + this.id + '">';
         html += '<h3>' + this.userName + '</h3>';
         html += '<p>' + this.createdAt + '</p>';
         html += '</div>';
