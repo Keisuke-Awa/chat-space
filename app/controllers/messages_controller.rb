@@ -10,9 +10,7 @@ class MessagesController < ApplicationController
     @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
     respond_to do |format|
       format.html
-      format.json {
-        render json: Message.search(id_gt: search_params[:last_message_id].to_i).result(distinct: true)
-      }
+      format.json { render json: Message.search(id_gt: search_params[:last_message_id].to_i).result(distinct: true) }
     end
   end
 
