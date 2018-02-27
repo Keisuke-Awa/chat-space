@@ -7,7 +7,7 @@ $(function(){
         this.imageUrl = data.image_url;
     };
 
-    Message.prototype.newHTML = function() {
+    Message.prototype.messageComponent = function() {
         var html = '<div class=\'main-content__chat-area__message\'>';
         html += '<div class=\'main-content__chat-area__message__info clearfix\'>';
         html += '<h3>' + this.userName + '</h3>';
@@ -46,7 +46,7 @@ $(function(){
         })
         .done(function(data){
             const message = new Message(data);
-            const html = message.newHTML();
+            const html = message.messageComponent();
             $('.main-content__chat-area').append(html);
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
             $('#message-text').val('');
@@ -69,7 +69,7 @@ $(function(){
                 var html = '';
                 messages.forEach( function( message ) {
                     var message = new Message(message);
-                    html +=  message.newHTML();
+                    html +=  message.messageComponent();
                 });
                 $('#chat-area').html(html);
             })
