@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render json: Message.search(id_gt: search_params[:last_message_id]).result(distinct: true)
+        render json: Message.search(id_gt: search_params[:last_message_id].to_i).result(distinct: true)
       }
     end
   end
