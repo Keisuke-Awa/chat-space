@@ -74,7 +74,7 @@ $(function(){
                 $('#chat-area').html(html);
             })
             .fail(function(){
-                alert(errors.responseJSON['errors']);
+                alert('自動更新に失敗しました');
             });
         },5 * 1000);
     }
