@@ -12,7 +12,7 @@
             = user.name
     = link_to edit_chat_group_path(@chat_group), class:'main-content__header__button' do
       %p Edit
-  .main-content__chat-area
+  .main-content__chat-area#chat-area
     - @messages.each do |msg|
       .main-content__chat-area__message
         .main-content__chat-area__message__info.clearfix
