@@ -8,6 +8,10 @@ class MessagesController < ApplicationController
     @message = Message.new
     chat_groups = current_user.chat_groups.includes(:messages)
     @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
+    respond_to do |format|
+      format.html
+      format.json { render json: @messages}
+    end
   end
 
   def create
