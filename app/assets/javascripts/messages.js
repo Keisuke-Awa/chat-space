@@ -44,17 +44,17 @@ $(function(){
                 processData: false,
                 contentType: false
             })
-                .done(function(data){
-                    const message = new Message(data);
-                    const html = message.messageComponent();
-                    $('#chat-area').append(html);
-                    autoMessageScroll();
-                    $('#message-text').val('');
-                    $('#message-img').val('');
-                })
-                .fail(function(errors) {
-                    alert(errors.responseJSON['errors']);
-                });
+            .done(function(data){
+                const message = new Message(data);
+                const html = message.messageComponent();
+                $('#chat-area').append(html);
+                autoMessageScroll();
+                $('#message-text').val('');
+                $('#message-img').val('');
+            })
+            .fail(function(errors) {
+                alert(errors.responseJSON['errors']);
+            });
             return false;
         });
 
