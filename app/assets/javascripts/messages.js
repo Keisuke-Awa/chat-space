@@ -21,6 +21,10 @@ $(function(){
             return html;
         };
 
+        Message.autoMessageScroll = function () {
+            $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
+        }
+
         const currentURL = location.href;
 
         function judgeValidURL(targetURL) {
@@ -28,9 +32,6 @@ $(function(){
             return regex.test(targetURL) ;
         };
 
-        function autoMessageScroll() {
-            $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
-        }
 
         $('#new_message').on('submit', function(e){
             e.preventDefault();
@@ -48,7 +49,7 @@ $(function(){
                 const message = new Message(data);
                 const html = message.messageComponent();
                 $('#chat-area').append(html);
-                autoMessageScroll();
+                Message.autoMessageScroll();
                 $('#message-text').val('');
                 $('#message-img').val('');
             })
@@ -80,7 +81,7 @@ $(function(){
                         html +=  message.messageComponent();
                     });
                     $('#chat-area').append(html);
-                    autoMessageScroll();
+                    Message.autoMessageScroll();
                 })
                 .fail(function(){
                     alert('自動更新に失敗しました');
