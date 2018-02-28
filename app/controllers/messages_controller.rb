@@ -38,8 +38,5 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:body, :image)
   end
 
-  def ajax_params
-    params.permit(:last_message_id, :chat_group_id)
-  end
 end
 
