@@ -82,7 +82,7 @@ $(function(){
                 var html = '';
                 newMessages.forEach( function( newMessage ) {
                     const message = new Message(newMessage);
-                    html +=  message.messageComponent();
+                    html +=  message.newHTMLComponent();
                 });
                 $('#chat-area').append(html);
                 Message.autoMessageScroll();
