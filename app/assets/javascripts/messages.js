@@ -67,7 +67,9 @@ $(function(){
                 $.ajax({
                     url: currentURL,
                     type: 'GET',
-                    data: { last_message_id: lastMessageId },
+                    data: {
+                        message: { id: lastMessageId }
+                    },
                     dataType: 'json'
                 })
                 .done(function(newMessages){
