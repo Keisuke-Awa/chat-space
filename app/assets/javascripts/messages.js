@@ -60,6 +60,7 @@ $(function(){
         });
 
         if( judgeValidURL(currentURL)){
+            const intervalTime = 5000;
             setInterval(function(){
                 var lastMessageId = $('.main-content__chat-area__message:last').data('id');
                 if(lastMessageId === void 0){
@@ -86,7 +87,7 @@ $(function(){
                 .fail(function(){
                     alert('自動更新に失敗しました');
                 });
-            },5 * 1000);
+            }, intervalTime );
         }
     }
 );
