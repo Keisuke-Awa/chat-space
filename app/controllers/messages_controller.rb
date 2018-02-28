@@ -8,10 +8,12 @@ class MessagesController < ApplicationController
     @message = Message.new
     chat_groups = current_user.chat_groups.includes(:messages)
     @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
-    new_messages = messages.search(id_gt: message_params[:id].to_i).result(distinct: true)
     respond_to do |format|
       format.html
-      format.json { render json: new_messages }
+      format.json {
+        new_messages = messages.search(id_gt: message_params[:id].to_i).result(distinct: true)
+        render json: new_messages
+      }
     end
   end
 
@@ -36,7 +38,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body, :image)
+    params.require(:message).permit(:id, :body, :image)
   end
 
 end
