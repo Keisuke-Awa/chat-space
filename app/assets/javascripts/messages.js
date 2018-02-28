@@ -70,13 +70,13 @@ $(function(){
                     data: { last_message_id: lastMessageId },
                     dataType: 'json'
                 })
-                .done(function(messages){
-                    if(messages.length === 0) {
+                .done(function(newMessages){
+                    if(newMessages.length === 0) {
                         return ;
                     };
                     var html = '';
-                    messages.forEach( function( message ) {
-                        var message = new Message(message);
+                    newMessages.forEach( function( newMessage ) {
+                        const message = new Message(newMessage);
                         html +=  message.messageComponent();
                     });
                     $('#chat-area').append(html);
