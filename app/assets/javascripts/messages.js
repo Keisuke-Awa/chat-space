@@ -8,7 +8,7 @@ $(function(){
         this.imageUrl = data.image_url;
     };
 
-    Message.prototype.messageComponent = function() {
+    Message.prototype.newHTMLComponent = function() {
         var html = '<div class=\'main-content__chat-area__message\' data-id="' + this.id + '">';
         html += '<div class="main-content__chat-area__message__info clearfix">';
         html += '<h3>' + this.userName + '</h3>';
@@ -46,7 +46,7 @@ $(function(){
         })
         .done(function(data){
             const message = new Message(data);
-            const html = message.messageComponent();
+            const html = message.newHTMLComponent();
             $('#chat-area').append(html);
             Message.autoMessageScroll();
             $('#message-text').val('');
