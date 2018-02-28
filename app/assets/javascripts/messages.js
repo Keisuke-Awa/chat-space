@@ -23,15 +23,13 @@ $(function(){
 
         Message.autoMessageScroll = function () {
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
-        }
-
-        const currentURL = location.href;
-
-        function isAutoloadApiURL(targetURL) {
-            const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
-            return regex.test(targetURL) ;
         };
 
+        Message.isAutoloadApiURL = function () {
+            const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
+            return regex.test(targetURL) ;        };
+
+        const currentURL = location.href;
 
         $('#new_message').on('submit', function(e){
             e.preventDefault();
@@ -59,7 +57,7 @@ $(function(){
             return false;
         });
 
-        if( isAutoloadApiURL(currentURL)){
+        if( Message.isAutoloadApiURL(currentURL)){
             const intervalTime = 5000;
             setInterval(function(){
                 var lastMessageId = $('.main-content__chat-area__message:last').data('id');
