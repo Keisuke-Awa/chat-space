@@ -21,7 +21,7 @@ $(function(){
             return html;
         };
 
-        var currentURL = location.href;
+        const currentURL = location.href;
 
         function judgeValidURL(targetURL) {
             const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
