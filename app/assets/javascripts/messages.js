@@ -25,7 +25,7 @@ $(function(){
 
         function judgeValidURL(targetURL) {
             const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
-            return (regex.test(targetURL)) ;
+            return regex.test(targetURL) ;
         };
 
         function autoMessageScroll() {
