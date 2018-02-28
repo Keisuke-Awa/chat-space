@@ -1,6 +1,6 @@
 $(function(){
     // Userクラスの定義
-    var User = function(data) {
+    const User = function(data) {
         this.id = data.id;
         this.name = data.name;
     };
