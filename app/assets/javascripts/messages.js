@@ -62,7 +62,8 @@ $(function(){
         setInterval(function(){
             var lastMessageId = $('.main-content__chat-area__message:last').data('id');
             if(lastMessageId === void 0){
-                lastMessageId = 0
+                const defaultMessageId = 0;
+                lastMessageId = defaultMessageId;
             }
             $.ajax({
                 url: currentURL,
