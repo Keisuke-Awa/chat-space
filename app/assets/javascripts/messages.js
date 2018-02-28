@@ -27,7 +27,7 @@ $(function(){
 
         const currentURL = location.href;
 
-        function judgeValidURL(targetURL) {
+        function isAutoloadApiURL(targetURL) {
             const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
             return regex.test(targetURL) ;
         };
@@ -59,7 +59,7 @@ $(function(){
             return false;
         });
 
-        if( judgeValidURL(currentURL)){
+        if( isAutoloadApiURL(currentURL)){
             const intervalTime = 5000;
             setInterval(function(){
                 var lastMessageId = $('.main-content__chat-area__message:last').data('id');
