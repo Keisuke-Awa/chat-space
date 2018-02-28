@@ -25,7 +25,7 @@ $(function(){
             $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
         };
 
-        Message.isAutoloadApiURL = function () {
+        Message.isAutoloadApiURL = function (targetURL) {
             const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
             return regex.test(targetURL) ;        };
 
