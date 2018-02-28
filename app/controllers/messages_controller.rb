@@ -8,9 +8,10 @@ class MessagesController < ApplicationController
     @message = Message.new
     chat_groups = current_user.chat_groups.includes(:messages)
     @chat_groups = ChatGroupDecorator.decorate_collection(chat_groups)
+    new_messages = messages.search(id_gt: message_params[:id].to_i).result(distinct: true)
     respond_to do |format|
       format.html
-      format.json { render json: messages.search(id_gt: ajax_params[:last_message_id].to_i).result(distinct: true) }
+      format.json { render json: new_messages }
     end
   end
 
