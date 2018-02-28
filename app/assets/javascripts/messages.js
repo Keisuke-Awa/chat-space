@@ -27,7 +27,8 @@ $(function(){
 
     Message.isAutoloadApiURL = function (targetURL) {
         const regex = new RegExp(/.+\/chat_groups\/\d+\/messages/);
-        return regex.test(targetURL) ;        };
+        return regex.test(targetURL) ;
+    };
 
     const currentURL = location.href;
 
