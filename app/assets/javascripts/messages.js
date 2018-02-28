@@ -30,6 +30,8 @@ $(function(){
         return regex.test(targetURL) ;
     };
 
+    Message.defaultMessageId = 0;
+
     const currentURL = location.href;
 
     $('#new_message').on('submit', function(e){
@@ -63,8 +65,7 @@ $(function(){
         setInterval(function(){
             var lastMessageId = $('.main-content__chat-area__message:last').data('id');
             if(lastMessageId === void 0){
-                const defaultMessageId = 0;
-                lastMessageId = defaultMessageId;
+                lastMessageId = Message.defaultMessageId;
             }
             $.ajax({
                 url: currentURL,
