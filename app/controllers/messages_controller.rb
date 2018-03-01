@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        new_messages = messages.new_records(id: message_params[:id])
+        new_messages = messages.new_records(id: message_params[:id].to_i)
         render json: new_messages
       }
     end
