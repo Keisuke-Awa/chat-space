@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        new_messages = messages.search(id_gt: message_params[:id].to_i).result(distinct: true)
+        new_messages = messages.new_records(message_params[:id])
         render json: new_messages
       }
     end
