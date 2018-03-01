@@ -21,7 +21,7 @@ class Message < ApplicationRecord
   validates :user_id, presence: true, numericality: { only_integer: true }
   validates :chat_group_id, presence: true, numericality: { only_integer: true }
 
-  scope :new_records, ->(id) { where("id > ?", id) }
+  scope :new_records, ->(id:) { where("id > ?", id) }
 
   private
   def body_or_image
