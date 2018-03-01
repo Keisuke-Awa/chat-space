@@ -21,7 +21,7 @@ $(function(){
         return html;
     };
 
-    Message.autoMessageScroll = function () {
+    Message.autoScroll = function () {
         $("html,body").animate({scrollTop:$('.main-content__chat-area__message').last().offset().top});
     };
 
@@ -30,7 +30,7 @@ $(function(){
         return regex.test(targetURL) ;
     };
 
-    Message.defaultMessageId = 0;
+    Message.defaultId = 0;
 
     const currentURL = location.href;
 
@@ -50,7 +50,7 @@ $(function(){
             const message = new Message(data);
             const html = message.newHTMLComponent();
             $('#chat-area').append(html);
-            Message.autoMessageScroll();
+            Message.autoScroll();
             $('#message-text').val('');
             $('#message-img').val('');
         })
@@ -65,7 +65,7 @@ $(function(){
         setInterval(function(){
             var lastMessageId = $('.main-content__chat-area__message:last').data('id');
             if(lastMessageId === void 0){
-                lastMessageId = Message.defaultMessageId;
+                lastMessageId = Message.defaultId;
             }
             $.ajax({
                 url: currentURL,
@@ -85,7 +85,7 @@ $(function(){
                     html +=  message.newHTMLComponent();
                 });
                 $('#chat-area').append(html);
-                Message.autoMessageScroll();
+                Message.autoScroll();
             })
             .fail(function(){
                 alert('自動更新に失敗しました');
